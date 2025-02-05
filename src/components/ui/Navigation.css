@@ -1,0 +1,22 @@
+.navbar {
+    background-color: #001633 !important; /* Dark blue */
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    position: relative; 
+    z-index: 10; /* Places it above other elements if necessary */
+  }
+  
+  /* Style for Navigation Links */
+  .navbar a {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  /* Hover Effect */
+  .navbar a:hover {
+    color: #007bff;
+  }

@@ -1,0 +1,411 @@
+/* Carousel css */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 34px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px;
+  }
+  
+  .card h3 {
+    font-size: 25px;
+  }
+  
+  .card {
+    background-color: white;
+    color: #003366;
+    padding: 8px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .text-carousel {
+    width: 100%;
+    max-width: 500px;
+    overflow: hidden;
+    position: relative;
+    margin: 20px auto;
+    text-align: center;
+    color:white;
+  }
+  
+  .carousel-text {
+    display: none;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .carousel-text.active {
+    display: block;
+  }
+  
+  .carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .nav-button {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+  }
+  
+  .dots-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dot.active {
+    background-color: white;
+  }
+
+  .main{
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    padding-top: 30px;
+  }
+
+  .main h2{
+    text-align:center;
+    color:white;
+    font-size: 30px;
+  }
+
+  /* GenreSection css */
+  .genre-grid {
+    display: flex; 
+    justify-content: center; 
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    flex-wrap: wrap; 
+  }
+  
+  .genre-card {
+    background-color: #f6f7f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-transform: uppercase;
+    width: 150px; 
+    height:100px;
+    flex: 1 1 120px;
+  }
+  
+  .genre-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .genre-card img {
+    width: 70px;
+  }
+  
+  .genre-card p {
+    font-size: 15px;
+    color: #3174cc;
+    font-weight: 500;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    margin-top:30px;
+  }
+
+  /* Navigation css */
+  .navbar {
+    background-color: #001633 !important;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    position: relative; 
+    z-index: 10;
+  }
+  
+  .navbar a {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .navbar a:hover {
+    color: #007bff;
+  }
+
+/* new section */
+.info-section {
+    color: white;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; 
+    position: relative;
+    padding-left: 120px;
+  }
+  
+  .info-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-text {
+    flex: 1;
+    margin-right: 50px;
+    text-align: left;
+  }
+  
+  .info-text h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-left:80px;
+    width:450px;
+  }
+  
+  .info-contact {
+    flex: 0 1 auto;
+  }
+  
+  .contact-btn {
+    background-color: #42b883;
+    color: white;
+    border: none;
+    padding: 8px ;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top:15px;
+  }
+  
+  .contact-btn:hover {
+    background-color: #379a6c;
+  }
+  
+  .info-image {
+    /* flex: 1; */
+    margin-left:80px;
+  }
+  
+  .info-image img {
+    width: 400px; 
+    height: auto;
+  }
+  /* FAQ Section */
+  .faq-container {
+    width: 600px;
+    padding-left: 50px;
+    padding-right:50px;
+  }
+  
+  .faq-container h1 {
+    text-align:left;
+    margin-bottom: 20px;
+    color:#6a11cb;
+    font-size:24px;
+    font-weight: 500;
+    
+  }
+  
+  .faq-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    color:#6a11cb;
+    width:1180px;
+  }
+  
+  .faq-question {
+    background-color: #f4f4f4;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .faq-answer {
+    padding: 15px 30px 10px 20px;
+    background-color: #fff;
+    font-size: 16px;
+    text-align: left;
+    word-spacing: 5px;
+    font-family: Helvetica, sans-serif;
+    display: block; 
+  }
+  
+  
+  .toggle-icon {
+    font-size: 20px;
+    color: #6a11cb;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    transition: font-size 0.3s ease; 
+  }
+  
+  .top-container {
+    text-align: center;
+    margin-top: 20px;
+     cursor:pointer;
+     color: white;
+     font-size: 20px;
+     margin-bottom: 20px;
+  }
+  
+  .moveToTop {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .white-section {
+    background-color: white; 
+    padding: 20px;          
+    margin-left: 20px;       
+    margin-right: 20px; 
+  }
+
+  /* Sidebar css */
+  /* Sidebar Styling */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px; /* Hidden initially */
+  width: 300px;
+  height: 100%;
+  background-color: white; /* White background for the rest */
+  color: #6a11cb;
+  transition: left 0.3s ease-in-out;
+  z-index: 1000;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto; /* Enable vertical scrollbar */
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  background-color: #6a11cb; /* Purple background */
+  color: white; /* White text */
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height:50px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile-icon {
+  background-color: #b081e3;
+  font-size: 25px;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4px;
+  font-size: 18px;
+}
+
+.profile-name {
+  margin-left: 25px;
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+/* Close Button */
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-top: -5px;
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+  list-style: none;
+  padding: 20px 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.sidebar-menu li {
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-menu li a {
+  color: #9e57eb;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.sidebar-menu li a:hover {
+  text-decoration: none;
+  color: #7b00ff;
+}
+
+.sidebar-footer {
+  padding: 15px;
+  text-align: center;
+  background-color: white;
+}
+
+.logout-btn {
+  background-color: #6a11cb;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #6a11cb;
+}
