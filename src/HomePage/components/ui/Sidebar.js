@@ -20,8 +20,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       </div>
       <ul className="sidebar-menu">
         <li>
-          <a href="#" onClick={toggleSidebar}>
-            Home
+          <button className="menu-button">
+            <i className="fas fa-bars"></i>
+          </button>
+          <a href="/" onClick={toggleSidebar}>
+            <span>Home</span>
           </a>
         </li>
         <li>

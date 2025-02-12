@@ -95,7 +95,7 @@
   .genre-grid {
     display: flex; 
     justify-content: center; 
-    gap: 20px;
+    gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
@@ -112,7 +112,7 @@
     transition: transform 0.3s, box-shadow 0.3s;
     text-transform: uppercase;
     width: 150px; 
-    height:100px;
+    height:150px;
     flex: 1 1 120px;
   }
   
@@ -328,12 +328,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height:50px;
 }
 
 .profile {
   display: flex;
   align-items: center;
+  height:31px;
 }
 
 .profile-icon {
@@ -410,4 +410,24 @@
 
 .logout-btn:hover {
   background-color: #6a11cb;
+}
+
+.navbar {
+  /* display: flex; */
+  /* gap: 10px; */
+  height:45px;
+  
+}
+
+.channel {
+  /* color: black !important;  Ensure default black */
+  text-decoration: none;
+  /* padding: 10px 15px; */
+  /* padding-bottom: 20px; */
+  font-size: 18px;
+  transition: color 0.3s ease-in-out;
+}
+
+.channel.active-link {
+  color: #007bff; /* Ensure active color */
 }

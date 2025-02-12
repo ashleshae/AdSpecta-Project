@@ -7,7 +7,6 @@ const HamburgerMenu = ({ toggleSidebar }) => {
       <div>
         <img src="images/menuIcon.png" alt="Menu" width="25" height="25" />
       </div>
-      <h1>AdSpecta</h1>
     </div>
   );
 };

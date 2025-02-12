@@ -1,6 +1,9 @@
 import { useState } from "react"
 import "./BrowseMedia.css"
 import React from "react"
+import Header from "../HomePage/components/ui/Header";
+import Navigation from "../HomePage/components/ui/Navigation";
+
 
 const BrowseMedia = () => {
   const [targetAudience, setTargetAudience] = useState("")
@@ -9,103 +12,46 @@ const BrowseMedia = () => {
   const newspapers = [
     {
       id: 1,
-      title: "Times Of India, Mumbai, English",
-      language: "English",
+      title: "Hoarding,Airport Road-Pune",
+      language: "Hoarding",
       readers: "750000",
       minSpend: "₹1,01,520",
       image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-03%20161751-3euvESQVfuJfZ8qeOkM2RcusJ7E69Z.png",
+        "https://docs.google.com/spreadsheets/d/1kLNg0631V5LqVLx7NgUb2UXbI2SyHuy1y5vblBgEbWo/edit?gid=551119373#gid=551119373&range=K2",
     },
     {
       id: 2,
-      title: "Times Of India, Bangalore, English",
-      language: "English",
+      title: "Hoarding,Alka Chowk-Pune",
+      language: "Hoarding",
       readers: "366465",
       minSpend: "₹66,420",
       image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-03%20161751-3euvESQVfuJfZ8qeOkM2RcusJ7E69Z.png",
+        "https://docs.google.com/spreadsheets/d/1kLNg0631V5LqVLx7NgUb2UXbI2SyHuy1y5vblBgEbWo/edit?gid=551119373#gid=551119373&range=K2",
     },
     {
       id: 3,
-      title: "Times Of India, Delhi, English",
-      language: "English",
+      title: "Hoarding,Aundh-Pune",
+      language: "Hoarding",
       readers: "594773",
       minSpend: "₹74,160",
       image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-03%20161751-3euvESQVfuJfZ8qeOkM2RcusJ7E69Z.png",
+        "https://docs.google.com/spreadsheets/d/1kLNg0631V5LqVLx7NgUb2UXbI2SyHuy1y5vblBgEbWo/edit?gid=551119373#gid=551119373&range=K2",
     },
     {
       id: 4,
-      title: "Hindustan Times, Delhi, English",
-      language: "English",
+      title: "Hoarding,Baner Road-Pune",
+      language: "Hoarding",
       readers: "400000",
       minSpend: "₹85,000",
       image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-03%20161751-3euvESQVfuJfZ8qeOkM2RcusJ7E69Z.png",
+        "https://docs.google.com/spreadsheets/d/1kLNg0631V5LqVLx7NgUb2UXbI2SyHuy1y5vblBgEbWo/edit?gid=551119373#gid=551119373&range=K2",
     },
   ]
 
   return (
     <div>
-      <header className="header">
-        <div className="header-content">
-          <div className="logo-section">
-            <button className="menu-button">
-              <i className="fas fa-bars"></i>
-            </button>
-            <a href="/" className="logo">
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-03%20161751-3euvESQVfuJfZ8qeOkM2RcusJ7E69Z.png"
-                alt="The Media Ant"
-              />
-              <span>THE MEDIA ANT</span>
-            </a>
-          </div>
-
-          <div className="search-bar">
-            <input type="text" placeholder="Search Channel, Media" />
-            <span className="search-icon">🔍</span>
-          </div>
-
-          <div className="header-buttons">
-            <button className="header-button">Contact Us</button>
-            <button className="header-button">Login</button>
-            <button className="header-button">Your Bag</button>
-          </div>
-        </div>
-      </header>
-
-      <nav className="nav-bar">
-        <div className="nav-content">
-          <a href="#" className="nav-link">
-            Cinema
-          </a>
-          <a href="#" className="nav-link">
-            Magazine
-          </a>
-          <a href="#" className="nav-link">
-            Influencer
-          </a>
-          <a href="#" className="nav-link active">
-            Newspaper
-          </a>
-          <a href="#" className="nav-link">
-            Digital
-          </a>
-          <a href="#" className="nav-link">
-            BTL
-          </a>
-          <a href="#" className="nav-link">
-            Outdoor
-          </a>
-          <a href="#" className="nav-link">
-            Radio
-          </a>
-          <a href="#" className="nav-link">
-            Television
-          </a>
-        </div>
-      </nav>
+      <Header />
+      <Navigation/>
 
       <main className="main-content">
         <aside className="filters">
@@ -116,7 +62,7 @@ const BrowseMedia = () => {
             <input type="text" placeholder="Type to search" className="select" />
           </div>
 
-          <div className="filter-group">
+          {/* <div className="filter-group">
             <h3 className="filter-group-title">AD OPTIONS</h3>
             <div className="checkbox-group">
               <label className="checkbox-label">
@@ -132,7 +78,7 @@ const BrowseMedia = () => {
                 <input type="checkbox" /> Agency Fee
               </label>
             </div>
-          </div>
+          </div> */}
 
           <div className="filter-group">
             <h3 className="filter-group-title">CATEGORY</h3>
@@ -156,9 +102,9 @@ const BrowseMedia = () => {
         <div className="content-area">
           <div className="content-header">
             <div className="breadcrumb">
-              <a href="/">Home</a>
-              <span>›</span>
-              <span>Newspaper</span>
+              {/* <a href="/">Home</a>
+              <span>›</span> */}
+              <span>BillBoard</span>
             </div>
 
             <div className="header-controls">
@@ -181,7 +127,7 @@ const BrowseMedia = () => {
             </div>
           </div>
 
-          <h1 className="page-title">Book Newspaper Ads Online At Lowest Rates</h1>
+          <h1 className="page-title">Book BillBoard Ads Online At Lowest Rates</h1>
 
           <div className="newspaper-grid">
             {newspapers.map((newspaper) => (
@@ -197,7 +143,8 @@ const BrowseMedia = () => {
                     <span>{newspaper.readers}</span>
                   </div>
                   <div className="stat">
-                    <span>💬</span>
+                    {/* <span>💬</span> */}
+                    <img src="https://cdn-icons-png.freepik.com/512/8145/8145863.png"></img>
                     <span>{newspaper.minSpend} Min Spend</span>
                   </div>
                 </div>

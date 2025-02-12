@@ -110,11 +110,11 @@ body {
 }
 
 .main-content {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 2rem;
+  max-width: 1600px;
+  padding:30px ;
   display: flex;
   gap: 2rem;
+  background-color: white;;
 }
 
 .filters {
@@ -169,6 +169,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-size: 20px;
 }
 
 .breadcrumb a {
@@ -293,5 +294,10 @@ body {
   .select {
     width: 100%;
   }
+}
+
+.stat img{
+  height:15px;
+  width:15px;
 }
 

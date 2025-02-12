@@ -31,11 +31,11 @@ const FAQ = () => {
           </p>
           <p>To book an ad on AdSpecta, follow these simple steps:</p>
           <ol>
-            <li>Select the media option on the platform. AdSpecta provides thousands of advertising options across various media channels.</li>
-            <li>Filter the available options based on category, advertising type, language, location, network, and other relevant parameters.</li>
-            <li>Sort the advertising rates by top searches, categories, or languages, or explore a library of sample ads for reference.</li>
-            <li>Choose a specific ad placement by clicking on a card to view all available advertising options and their respective rates.</li>
-            <li>Select the most suitable option based on your budget and campaign goals, then click the submit button to request an express quote.</li>
+            <li> Select the media option on the platform. AdSpecta provides thousands of advertising options across various media channels.</li>
+            <li> Filter the available options based on category, advertising type, language, location, network, and other relevant parameters.</li>
+            <li> Sort the advertising rates by top searches, categories, or languages, or explore a library of sample ads for reference.</li>
+            <li> Choose a specific ad placement by clicking on a card to view all available advertising options and their respective rates.</li>
+            <li> Select the most suitable option based on your budget and campaign goals, then click the submit button to request an express quote.</li>
           </ol>
           <p>
             With AdSpecta, advertising is made simple, cost-effective, and accessible to all businesses.
