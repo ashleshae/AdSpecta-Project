@@ -189,7 +189,7 @@
   .info-text h2 {
     font-size: 30px;
     margin-bottom: 10px;
-    margin-left:80px;
+    /* margin-left:80px; */
     width:450px;
   }
   
@@ -208,6 +208,7 @@
     cursor: pointer;
     transition: background-color 0.3s;
     margin-top:15px;
+    width:150px;
   }
   
   .contact-btn:hover {
@@ -245,7 +246,7 @@
     margin-bottom: 10px;
     overflow: hidden;
     color:#6a11cb;
-    width:1180px;
+    width:1050px;
   }
   
   .faq-question {
@@ -431,3 +432,59 @@
 .channel.active-link {
   color: #007bff; /* Ensure active color */
 }
+
+.hamburger-menu{
+  cursor: pointer;
+}
+
+/* Login */
+.login-container {
+  position: relative;
+  display: inline-block;
+}
+
+.login-btn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 20; /* Ensures it's above other elements */
+}
+
+.login-btn a {
+  text-decoration: none;
+}
+
+.login-dropdown {
+  position: absolute;
+  top: 100%; /* Positions it below the login button */
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  z-index: 999; /* Ensures dropdown is above other elements */
+  border-radius: 5px;
+  white-space: nowrap;
+  margin-top: 5px; /* Adds a small gap between login button and dropdown */
+}
+
+.dropdown-btn {
+  background: #6b46c1;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  width: 100%;
+  margin: 3px 0;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.dropdown-btn:hover {
+  background: #5a38b0;
+}
+

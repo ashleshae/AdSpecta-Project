@@ -9,7 +9,7 @@ const BrowseMedia = () => {
   const [targetAudience, setTargetAudience] = useState("")
   const [sortBy, setSortBy] = useState("top")
 
-  const newspapers = [
+  const hoardings = [
     {
       id: 1,
       title: "Hoarding,Airport Road-Pune",
@@ -129,23 +129,22 @@ const BrowseMedia = () => {
 
           <h1 className="page-title">Book BillBoard Ads Online At Lowest Rates</h1>
 
-          <div className="newspaper-grid">
-            {newspapers.map((newspaper) => (
-              <div key={newspaper.id} className="newspaper-card">
-                <div className="newspaper-image">
-                  <img src={newspaper.image || "/placeholder.svg"} alt={newspaper.title} />
+          <div className="hoarding-grid">
+            {hoardings.map((hoarding) => (
+              <div key={hoarding.id} className="hoarding-card">
+                <div className="hoarding-image">
+                  <img src={hoarding.image || "/placeholder.svg"} alt={hoarding.title} />
                 </div>
-                <h3 className="newspaper-title">{newspaper.title}</h3>
-                <p className="newspaper-language">{newspaper.language}</p>
-                <div className="newspaper-stats">
-                  <div className="stat">
-                    <span>👥</span>
-                    <span>{newspaper.readers}</span>
+                <h3 className="hoarding-title">{hoarding.title}</h3>
+                <p className="hoarding-language">{hoarding.language}</p>
+                <div className="hoarding-stats">
+                  <div className="stat-1">
+                    <img src="images/reader.png"></img>
+                    <span>{hoarding.readers}</span>
                   </div>
-                  <div className="stat">
-                    {/* <span>💬</span> */}
-                    <img src="https://cdn-icons-png.freepik.com/512/8145/8145863.png"></img>
-                    <span>{newspaper.minSpend} Min Spend</span>
+                  <div className="stat-2">
+                    <img src="images/saletag.png"></img>
+                    <span>{hoarding.minSpend} Min Spend</span>
                   </div>
                 </div>
               </div>

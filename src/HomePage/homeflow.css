@@ -32,6 +32,7 @@ header h1 {
 .leftcorner {
   display: flex;
   align-items: center;
+  font-size:12px;
 }
 
 header .search input {
@@ -76,8 +77,8 @@ header input {
 
 .search img {
   position: absolute;
-  top:31px;
-  right: 510px; 
+  top:30px;
+  right: 450px; 
   transform: translateY(-50%);
   width: 20px; 
   height: 20px;
@@ -95,6 +96,7 @@ header input {
   color: black;
   padding: 8px;
   height:33px;
+  width:550px;
 }
 
 #search-bar input {
