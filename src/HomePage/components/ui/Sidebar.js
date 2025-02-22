@@ -28,7 +28,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <li><a href="#">Poster Designing AI Tool</a></li>
         <li><a href="#">My Dashboard</a></li>
         <li><a href="#">My Profile</a></li>
-        <li><a href="#">About Us</a></li>
+        <li><a href="/aboutus" onClick={toggleSidebar}>About Us</a></li>
         <li><a href="#">Contact Us</a></li>
       </ul>
 

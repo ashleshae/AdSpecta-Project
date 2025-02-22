@@ -666,4 +666,66 @@
   margin-bottom:5px;
 }
 
+/* About Us Page Styling */
+.about-us-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: rgba(26, 26, 26, 0.7);
+  color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px); 
+}
 
+.about-us-container h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 10px;
+}
+
+.about-section, .contact-section {
+  margin-bottom: 30px;
+}
+
+.about-section h2, .contact-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #f0c14b; /* Highlighted text */
+}
+
+.about-section p, .contact-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.about-section ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.about-section ul li {
+  font-size: 1rem;
+  line-height: 1.6;
+  padding-left: 20px;
+  position: relative;
+}
+
+.about-section ul li::before {
+  content: "✔";
+  color: #f0c14b;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.contact-section a {
+  color: #f0c14b;
+  text-decoration: none;
+}
+
+.contact-section a:hover {
+  text-decoration: underline;
+}

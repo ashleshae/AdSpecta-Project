@@ -6,12 +6,17 @@ import ScrollToTop from "./HomePage/components/ui/ScrollToTop";
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import BrowseHoarding from './BrowseMediaPage/BrowseHoarding';
+import AboutUs from './HomePage/components/ui/AboutUs';
 
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+  },
+  {
+    path: '/aboutus',
+    element: <AboutUs />,
   },
   {
     path: '/browse-hoarding',
