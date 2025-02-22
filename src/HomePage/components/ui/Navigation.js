@@ -7,7 +7,7 @@ const Navigation = () => {
   const location = useLocation();
   const menuItems = [
     { name: "Metro", path: "/browse-media/metro" },
-    { name: "BillBoard", path: "/browse-media" },
+    { name: "BillBoard", path: "/browse-hoarding" },
     { name: "Rickshaws", path: "/browse-media/rickshaws" },
     { name: "Bus", path: "/browse-media/bus" },
     { name: "Roadside Walls", path: "/browse-media/roadside-walls" },

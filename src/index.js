@@ -2,20 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './HomePage/homeflow.css';
 import App from './HomePage/homeflow';
+import ScrollToTop from "./HomePage/components/ui/ScrollToTop";
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import BrowseMedia from './BrowseMediaPage/BrowseMedia';
+import BrowseHoarding from './BrowseMediaPage/BrowseHoarding';
 
-const router=createBrowserRouter([
+
+const router = createBrowserRouter([
   {
-    path:'/',
-    element:<App/>
+    path: '/',
+    element: <App />,
   },
   {
-    path:'/browse-media',
-    element:<BrowseMedia/>
-  }
-])
+    path: '/browse-hoarding',
+    element: (
+      <>
+        <ScrollToTop />
+        <BrowseHoarding />
+      </>
+    ),
+  },
+ 
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,7 +32,5 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+

@@ -1,6 +1,5 @@
-// App.js
+// Homeflow.js
 import React from "react";
-//import { FaSearch } from "react-icons/fa";
 import "./homeflow.css";
 import { useState } from 'react';
 import Navigation from "./components/ui/Navigation";

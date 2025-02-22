@@ -1,28 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./homepage.css"; // Import styles
+import "./homepage.css"; 
 
 const GenreSection = () => {
   const genres = [
-    { name: "Metro", image: "images/metro.png" },
-    { name: "BillBoard", image: "images/billboard.png" },
-    { name: "Rickshaws", image: "images/rickshaw.png" },
-    { name: "Bus", image: "images/bus.png" },
-    { name: "Roadside Walls", image: "images/roadsideWall.png" },
-    { name: "Bus Shelter", image: "images/busShelter.png" },
+    { name: "Metro", image: "images/metro.png", path: "/browse-media/metro" },
+    { name: "BillBoard", image: "images/billboard.png", path: "/browse-hoarding" },
+    { name: "Rickshaws", image: "images/rickshaw.png", path: "/browse-media/rickshaw" },
+    { name: "Bus", image: "images/bus.png", path: "/browse-media/bus" },
+    { name: "Roadside Walls", image: "images/roadsideWall.png", path: "/browse-media/roadside-walls" },
+    { name: "Bus Shelter", image: "images/busShelter.png", path: "/browse-media/bus-shelter" },
   ];
 
   return (
     <div className="white-section">
       <h2 className="section-title">Browse Media by Genre</h2>
       <div className="genre-grid">
-      <Link to="/browse-media"></Link>
         {genres.map((genre, index) => (
-          <div className="genre-card" key={index}>
+          <Link to={genre.path} key={index} className="genre-card">
             <img src={genre.image} alt={genre.name} />
             <p>{genre.name}</p>
-            
-          </div>
+          </Link>
         ))}
       </div>
     </div>

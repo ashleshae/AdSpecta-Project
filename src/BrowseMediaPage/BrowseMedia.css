@@ -144,14 +144,17 @@ body {
 .checkbox-group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  align-items: flex-start;
+  gap: 0.7rem; 
+  width: 100%; 
 }
+
 
 .checkbox-label {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
+  white-space: nowrap;
+  gap:0.7em;
 }
 
 .content-area {
@@ -275,6 +278,36 @@ body {
   width:30px;
 }
 
+.dropdown-list{
+  max-height: 200px;
+  max-width: 215px;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+  border-radius: 4px ;
+  padding:10px;
+  cursor: pointer;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.clear-icon {
+  position: absolute;
+  right: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #999;
+}
+
+.clear-icon:hover {
+  color: black;
+  background-color: transparent;
+}
 
 
 @media (max-width: 768px) {
