@@ -4,31 +4,28 @@ import React from "react";
 import Header from "../HomePage/components/ui/Header";
 import Navigation from "../HomePage/components/ui/Navigation";
 
-const metroStations = [
-  "PCMC", "Sant Tukaram Nagar", "Nashik Phata", "Kasarwadi", "Phugewadi", "Dapodi", "Bopodi", "Khadki",
-  "Range Hills", "Shivajinagar", "Civil Court", "Budhwar Peth", "Mandai", "Swargate",
-  "Vanaz", "Anand Nagar", "Ideal Colony", "Nal Stop", "Garware College", "Deccan Gymkhana",
-  "Chhatrapati Sambhaji Udyan", "PMC", "Mangalwar Peth", "Pune Railway Station", "Ruby Hall Clinic",
-  "Bund Garden", "Yerwada", "Kalyani Nagar", "Ramwadi"
+const locations = [
+  "Shivajinagar", "Hinjewadi", "Kothrud", "Baner", "Wakad", "Karvenagar", "Koregaon Park", "Viman Nagar", "Kharadi", "Magarpatta",
+  "Hadapsar", "Swargate", "Camp", "Yerwada", "Bavdhan", "Undri", "Wagholi", "Saswad", "Pirangut", "Mohamadwadi"
 ];
 
-const BrowseMetro = () => {
+const BrowseRoadsideWalls = () => {
+  const [targetAudience, setTargetAudience] = useState("")
   const [sortBy, setSortBy] = useState("top")
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const filteredStations = metroStations.filter(station => 
-    station.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredLocations = locations.filter(location => 
+    location.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleLocationSelect = (station) => {
-    setSelectedLocation(station);
-    setSearchTerm(station);
+  const handleLocationSelect = (location) => {
+    setSelectedLocation(location);
+    setSearchTerm(location);
     setIsDropdownOpen(false);
   };
-
   const handleClearSelection = () => {
     setSelectedLocation("");
     setSearchTerm("");
@@ -47,55 +44,12 @@ const BrowseMetro = () => {
     };
   }, []);
 
-  const metroAds = [
-    {
-      id: 1,
-      title: "Interior Metro Branding in Pune",
-      media: "Metro Interior Ads",
-      viewers: "300000",
-      minSpend: "₹50,000",
-      image: "/images/interior_metro.jpg",
-    },
-    {
-      id: 2,
-      title: "Exterior Metro Branding in Pune",
-      media: "Metro Exterior Ads",
-      viewers: "400000",
-      minSpend: "₹75,000",
-      image: "/images/exterior_metro.jpg",
-    },
-    {
-      id: 3,
-      title: "Jingle in Pune Metro",
-      media: "Audio Ad in Metro",
-      viewers: "500000",
-      minSpend: "₹90,000",
-      image: "/images/jingle_metro.jpg",
-    },
-    {
-      id: 4,
-      title: "PCMC Metro Station Platform Ads",
-      media: "Platform Advertising",
-      viewers: "350000",
-      minSpend: "₹40,000",
-      image: "/images/pcmc_platform.jpg",
-    },
-    {
-      id: 5,
-      title: "Shivajinagar Metro Station Platform Ads",
-      media: "Platform Advertising",
-      viewers: "320000",
-      minSpend: "₹42,000",
-      image: "/images/shivajinagar_platform.jpg",
-    },
-    {
-      id: 6,
-      title: "Pune Railway Station Metro Platform Ads",
-      media: "Platform Advertising",
-      viewers: "450000",
-      minSpend: "₹55,000",
-      image: "/images/pune_station_platform.jpg",
-    },
+  const hoardings = [
+    { id: 1, title: "Hoarding,FC Road-Pune", media: "Wall Branding", readers: "500000", minSpend: "₹45,000", image: "/images/wall1.jpg" },
+    { id: 2, title: "Hoarding,Katraj-Pune", media: "Wall Branding", readers: "350000", minSpend: "₹38,000", image: "/images/wall2.jpg" },
+    { id: 3, title: "Hoarding,Swargate-Pune", media: "Wall Branding", readers: "700000", minSpend: "₹55,000", image: "/images/wall3.jpg" },
+    { id: 4, title: "Hoarding,Nal Stop-Pune", media: "Wall Branding", readers: "480000", minSpend: "₹42,000", image: "/images/wall4.jpg" },
+    { id: 5, title: "Hoarding,MG Road-Pune", media: "Wall Branding", readers: "620000", minSpend: "₹48,000", image: "/images/wall5.jpg" },
   ];
 
   return (
@@ -107,13 +61,13 @@ const BrowseMetro = () => {
           <h2 className="filter-title">Filters</h2>
 
           <div className="filter-group">
-            <h3 className="filter-group-title">METRO STATION</h3>
+            <h3 className="filter-group-title">LOCATION</h3>
             <div className="dropdown-container" ref={dropdownRef}>
               <div className="input-wrapper">
                 <input 
                   type="text" 
                   className="select" 
-                  placeholder="Search Metro Station" 
+                  placeholder="Search Location" 
                   value={searchTerm} 
                   onChange={(e) => {
                     setSearchTerm(e.target.value);
@@ -128,15 +82,17 @@ const BrowseMetro = () => {
 
               {isDropdownOpen && (
                 <ul className="dropdown-list">
-                  {filteredStations.map((station) => (
-                    <li key={station} onClick={() => handleLocationSelect(station)}>
-                      {station}
+                  {filteredLocations.map((location) => (
+                    <li key={location} onClick={() => handleLocationSelect(location)}>
+                      {location}
                     </li>
                   ))}
                 </ul>
               )}
             </div>
+
           </div>
+
           <div className="filter-group">
             <h3 className="filter-group-title">CATEGORY</h3>
             <div className="checkbox-group">
@@ -164,11 +120,20 @@ const BrowseMetro = () => {
             <div className="breadcrumb">
               <a href="/">Home</a>
               <span>›</span>
-              <span>Metro Branding</span>
+              <span>Roadside Wall Ads</span>
             </div>
           </div>
 
           <div className="header-controls">
+            <div className="select-wrapper">
+              <select className="select" value={targetAudience} onChange={(e) => setTargetAudience(e.target.value)}>
+                <option value="">TARGET AUDIENCE</option>
+                <option value="youth">Youth</option>
+                <option value="adults">Adults</option>
+                <option value="seniors">Seniors</option>
+              </select> 
+            </div>
+
             <div className="select-wrapper">
               <select className="select" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
                 <option value="top">Top Searched</option>
@@ -176,26 +141,26 @@ const BrowseMetro = () => {
                 <option value="price-high">Price: High to Low</option>
               </select>
             </div>
-          </div>
-
-          <h1 className="page-title">Book Metro Ads Online At Best Rates</h1>
+            </div>
+          
+          <h1 className="page-title">Book Roadside Wall Ads Online At Lowest Rates</h1>
 
           <div className="hoarding-grid">
-            {metroAds.map((ad) => (
-              <div key={ad.id} className="hoarding-card">
+            {hoardings.map((hoarding) => (
+              <div key={hoarding.id} className="hoarding-card">
                 <div className="hoarding-image">
-                  <img src={ad.image || "/placeholder.svg"} alt={ad.title} />
+                  <img src={hoarding.image || "/placeholder.svg"} alt={hoarding.title} />
                 </div>
-                <h3 className="hoarding-title">{ad.title}</h3>
-                <p className="hoarding-language">{ad.media}</p>
+                <h3 className="hoarding-title">{hoarding.title}</h3>
+                <p className="hoarding-language">{hoarding.media}</p>
                 <div className="hoarding-stats">
                   <div className="stat-1">
-                    <img src="images/reader.png" alt="viewers"/>
-                    <span>{ad.viewers}</span>
+                    <img src="images/reader.png" alt="readers"/>
+                    <span>{hoarding.readers}</span>
                   </div>
                   <div className="stat-2">
                     <img src="images/saletag.png" alt="sale tag"/>
-                    <span>{ad.minSpend} Min Spend</span>
+                    <span>{hoarding.minSpend} Min Spend</span>
                   </div>
                 </div>
               </div>
@@ -210,4 +175,4 @@ const BrowseMetro = () => {
   );
 };
 
-export default BrowseMetro;
+export default BrowseRoadsideWalls;

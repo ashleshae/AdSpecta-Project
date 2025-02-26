@@ -1,5 +1,3 @@
-
-
 import { useState, useRef, useEffect } from "react";
 import "./BrowseMedia.css";
 import React from "react";
@@ -12,8 +10,8 @@ const locations = [
   "Talegaon", "Kirkatwadi", "Bhosale Nagar", "Mamurdi", "Charoli", "Nandoshi", "Manjari", "Uruli Kanchan"
 ];
 
-const BrowseAuto = () => {
-  const [sortBy, setSortBy] = useState("top")
+const BrowseBusBranding = () => {
+  const [sortBy, setSortBy] = useState("top");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -50,35 +48,27 @@ const BrowseAuto = () => {
   const hoardings = [
     {
       id: 1,
-      title: "Auto Branding, Shivajinagar",
-      media: "Rickshaw",
-      viewers: "200000",
-      minSpend: "₹30,000",
-      image: "/images/auto_shivajinagar.jpg",
+      title: "AC Bus, Shivajinagar",
+      media: "AC Bus",
+      viewers: "300000",
+      minSpend: "₹50,000",
+      image: "/images/bus_ac_shivajinagar.jpg",
     },
     {
       id: 2,
-      title: "Auto Branding, Kothrud",
-      media: "Rickshaw",
-      viewers: "180000",
-      minSpend: "₹28,000",
-      image: "/images/auto_kothrud.jpg",
+      title: "Non-AC Bus, Kothrud",
+      media: "Non-AC Bus",
+      viewers: "250000",
+      minSpend: "₹40,000",
+      image: "/images/bus_nonac_kothrud.jpg",
     },
     {
       id: 3,
-      title: "Auto Branding, Baner",
-      media: "Rickshaw",
-      viewers: "160000",
-      minSpend: "₹25,000",
-      image: "/images/auto_baner.jpg",
-    },
-    {
-      id: 4,
-      title: "Auto Branding, Hinjewadi",
-      media: "Rickshaw",
-      viewers: "220000",
-      minSpend: "₹32,000",
-      image: "/images/auto_hinjewadi.jpg",
+      title: "AC Bus, Baner",
+      media: "AC Bus",
+      viewers: "280000",
+      minSpend: "₹45,000",
+      image: "/images/bus_ac_baner.jpg",
     },
   ];
 
@@ -89,7 +79,6 @@ const BrowseAuto = () => {
       <main className="main-content">
         <aside className="filters">
           <h2 className="filter-title">Filters</h2>
-
           <div className="filter-group">
             <h3 className="filter-group-title">LOCATION</h3>
             <div className="dropdown-container" ref={dropdownRef}>
@@ -109,7 +98,6 @@ const BrowseAuto = () => {
                   <button className="clear-icon" onClick={handleClearSelection}>✖</button>
                 )}
               </div>
-
               {isDropdownOpen && (
                 <ul className="dropdown-list">
                   {filteredLocations.map((location) => (
@@ -121,20 +109,17 @@ const BrowseAuto = () => {
               )}
             </div>
           </div>
-
         </aside>
-
         <div className="content-area">
           <div className="content-header">
             <div className="breadcrumb">
               <a href="/">Home</a>
               <span>›</span>
-              <span>Rickshaw Branding</span>
+              <span>Bus Branding</span>
             </div>
           </div>
 
           <div className="header-controls">
-
             <div className="select-wrapper">
               <select className="select" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
                 <option value="top">Top Searched</option>
@@ -142,10 +127,8 @@ const BrowseAuto = () => {
                 <option value="price-high">Price: High to Low</option>
               </select>
             </div>
-          </div>
-          
-          <h1 className="page-title">Book Rickshaw Ads Online At Lowest Rates</h1>
-
+            </div>
+            <h1 className="page-title">Book Bus Ads Online At Best Rates</h1>
           <div className="hoarding-grid">
             {hoardings.map((hoarding) => (
               <div key={hoarding.id} className="hoarding-card">
@@ -176,4 +159,4 @@ const BrowseAuto = () => {
   );
 };
 
-export default BrowseAuto;
+export default BrowseBusBranding;

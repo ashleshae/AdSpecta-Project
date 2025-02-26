@@ -11,6 +11,8 @@ import BrowseMetro from './BrowseMediaPage/BrowseMetro';
 import AboutUs from './HomePage/components/ui/AboutUs';
 import ContactUs from './HomePage/components/ui/ContactUs';
 import BrowseBusShelters from './BrowseMediaPage/BrowseBusShelter';
+import BrowseBus from './BrowseMediaPage/BrowseBus';
+import BrowseRoadSideWalls from './BrowseMediaPage/BrowseRoadSideWalls';
 
 const router = createBrowserRouter([
   {
@@ -68,6 +70,24 @@ const router = createBrowserRouter([
       <>
         <ScrollToTop />
         <BrowseBusShelters />
+      </>
+    ),
+  },
+  {
+    path: '/browse-bus',
+    element: (
+      <>
+        <ScrollToTop />
+        <BrowseBus />
+      </>
+    ),
+  },
+  {
+    path: '/browse-roadside-walls',
+    element: (
+      <>
+        <ScrollToTop />
+        <BrowseRoadSideWalls />
       </>
     ),
   },

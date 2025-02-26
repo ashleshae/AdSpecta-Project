@@ -9,8 +9,8 @@ const Navigation = () => {
     { name: "Metro", path: "/browse-metro" },
     { name: "BillBoard", path: "/browse-hoarding" },
     { name: "Rickshaws", path: "/browse-auto" },
-    { name: "Bus", path: "/browse-media/bus" },
-    { name: "Roadside Walls", path: "/browse-media/roadside-walls" },
+    { name: "Bus", path: "/browse-bus" },
+    { name: "Roadside Walls", path: "/browse-roadside-walls" },
     { name: "Bus Shelter", path: "/browse-bus-shelter" },
   ];
 

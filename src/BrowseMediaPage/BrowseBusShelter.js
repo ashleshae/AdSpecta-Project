@@ -163,7 +163,7 @@ const BrowseBusShelters = () => {
                 <option value="price-high">Price: High to Low</option>
               </select>
             </div>
-            </div>
+          </div>
 
           <h1 className="page-title">Book Bus Shelter Ads Online At Best Rates</h1>
           <div className="hoarding-grid">
