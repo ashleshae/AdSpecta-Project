@@ -350,4 +350,42 @@ body {
   }
 }
 
+.header-controls {
+  position: absolute;
+  top: 130px; /* Adjust as needed */
+  right: 50px; /* Adjust as needed */
+  display: flex;
+  gap: 15px; /* Space between dropdowns */
+  align-items: center;
+}
+
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.select {
+  width: 180px; /* Adjust width as needed */
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  appearance: none; /* Removes default browser styling */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Optional: Add a down-arrow icon */
+.select-wrapper::after {
+  content: "▼";
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+
 

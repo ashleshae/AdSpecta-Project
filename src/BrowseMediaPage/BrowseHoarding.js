@@ -11,6 +11,8 @@ const locations = [
 ];
 
 const BrowseMedia = () => {
+  const [targetAudience, setTargetAudience] = useState("")
+  const [sortBy, setSortBy] = useState("top")
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -48,7 +50,7 @@ const BrowseMedia = () => {
     {
             id: 1,
             title: "Hoarding,Airport Road-Pune",
-            language: "Hoarding",
+            media: "Hoarding",
             readers: "750000",
             minSpend: "₹1,01,520",
             image:
@@ -57,7 +59,7 @@ const BrowseMedia = () => {
           {
             id: 2,
             title: "Hoarding,Alka Chowk-Pune",
-            language: "Hoarding",
+            media: "Hoarding",
             readers: "366465",
             minSpend: "₹66,420",
             image:
@@ -66,7 +68,7 @@ const BrowseMedia = () => {
           {
             id: 3,
             title: "Hoarding,Aundh-Pune",
-            language: "Hoarding",
+            media: "Hoarding",
             readers: "594773",
             minSpend: "₹74,160",
             image:
@@ -75,7 +77,7 @@ const BrowseMedia = () => {
           {
             id: 4,
             title: "Hoarding,Baner Road-Pune",
-            language: "Hoarding",
+            media: "Hoarding",
             readers: "400000",
             minSpend: "₹85,000",
             image:
@@ -154,6 +156,25 @@ const BrowseMedia = () => {
               <span>BillBoard</span>
             </div>
           </div>
+
+          <div className="header-controls">
+            <div className="select-wrapper">
+              <select className="select" value={targetAudience} onChange={(e) => setTargetAudience(e.target.value)}>
+                <option value="">TARGET AUDIENCE</option>
+                <option value="youth">Youth</option>
+                <option value="adults">Adults</option>
+                <option value="seniors">Seniors</option>
+              </select> 
+            </div>
+
+            <div className="select-wrapper">
+              <select className="select" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+                <option value="top">Top Searched</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+              </select>
+            </div>
+            </div>
           
           <h1 className="page-title">Book BillBoard Ads Online At Lowest Rates</h1>
 
@@ -164,7 +185,7 @@ const BrowseMedia = () => {
                   <img src={hoarding.image || "/placeholder.svg"} alt={hoarding.title} />
                 </div>
                 <h3 className="hoarding-title">{hoarding.title}</h3>
-                <p className="hoarding-language">{hoarding.language}</p>
+                <p className="hoarding-language">{hoarding.media}</p>
                 <div className="hoarding-stats">
                   <div className="stat-1">
                     <img src="images/reader.png" alt="readers"/>

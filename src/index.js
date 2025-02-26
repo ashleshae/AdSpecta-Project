@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import BrowseHoarding from './BrowseMediaPage/BrowseHoarding';
 import AboutUs from './HomePage/components/ui/AboutUs';
-
+import ContactUs from './HomePage/components/ui/ContactUs';
 
 const router = createBrowserRouter([
   {
@@ -16,7 +16,21 @@ const router = createBrowserRouter([
   },
   {
     path: '/aboutus',
-    element: <AboutUs />,
+    element: (
+      <>
+        <ScrollToTop />
+        <AboutUs />
+      </>
+    ),
+  },
+  {
+    path: '/contactus',
+    element:(
+      <>
+        <ScrollToTop />
+        <ContactUs/>
+      </>
+    ),
   },
   {
     path: '/browse-hoarding',

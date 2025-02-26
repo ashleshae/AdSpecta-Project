@@ -729,3 +729,46 @@
 .contact-section a:hover {
   text-decoration: underline;
 }
+
+/* Contact Us page */
+
+
+.contact-form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 45%;
+}
+
+.contact-form h2 {
+  margin-bottom: 15px;
+}
+
+.contact-form input,
+.contact-form select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.send-btn {
+  width: 100%;
+  background: #28a745;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.contact-info {
+  width: 45%;
+  text-align: center;
+}
+
+.support-image {
+  width: 100%;
+  max-width: 300px;
+}
