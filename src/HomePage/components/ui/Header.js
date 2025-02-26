@@ -37,7 +37,7 @@ const Header = () => {
       </div>
 
       <div className="leftcorner">
-        <a href="#">Contact Us</a>
+        <a href="/contactus">Contact Us</a>
         
         <div className="login-container">
           <div className="login-btn" onClick={() => setLoginOpen(true)} >

@@ -6,8 +6,11 @@ import ScrollToTop from "./HomePage/components/ui/ScrollToTop";
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import BrowseHoarding from './BrowseMediaPage/BrowseHoarding';
+import BrowseAuto from './BrowseMediaPage/BrowseAuto';
+import BrowseMetro from './BrowseMediaPage/BrowseMetro';
 import AboutUs from './HomePage/components/ui/AboutUs';
 import ContactUs from './HomePage/components/ui/ContactUs';
+import BrowseBusShelters from './BrowseMediaPage/BrowseBusShelter';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +41,33 @@ const router = createBrowserRouter([
       <>
         <ScrollToTop />
         <BrowseHoarding />
+      </>
+    ),
+  },
+  {
+    path: '/browse-auto',
+    element: (
+      <>
+        <ScrollToTop />
+        <BrowseAuto />
+      </>
+    ),
+  },
+  {
+    path: '/browse-metro',
+    element: (
+      <>
+        <ScrollToTop />
+        <BrowseMetro />
+      </>
+    ),
+  },
+  {
+    path: '/browse-bus-shelter',
+    element: (
+      <>
+        <ScrollToTop />
+        <BrowseBusShelters />
       </>
     ),
   },

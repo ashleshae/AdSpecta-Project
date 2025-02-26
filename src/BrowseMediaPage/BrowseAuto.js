@@ -1,3 +1,5 @@
+
+
 import { useState, useRef, useEffect } from "react";
 import "./BrowseMedia.css";
 import React from "react";
@@ -10,8 +12,7 @@ const locations = [
   "Talegaon", "Kirkatwadi", "Bhosale Nagar", "Mamurdi", "Charoli", "Nandoshi", "Manjari", "Uruli Kanchan"
 ];
 
-const BrowseHoarding = () => {
-  const [targetAudience, setTargetAudience] = useState("")
+const BrowseAuto = () => {
   const [sortBy, setSortBy] = useState("top")
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");
@@ -48,41 +49,37 @@ const BrowseHoarding = () => {
 
   const hoardings = [
     {
-            id: 1,
-            title: "Hoarding,Airport Road-Pune",
-            media: "Hoarding",
-            readers: "750000",
-            minSpend: "₹1,01,520",
-            image:
-              "https://docs.google.com/spreadsheets/d/1kLNg0631V5LqVLx7NgUb2UXbI2SyHuy1y5vblBgEbWo/edit?gid=551119373#gid=551119373&range=K2",
-          },
-          {
-            id: 2,
-            title: "Hoarding,Alka Chowk-Pune",
-            media: "Hoarding",
-            readers: "366465",
-            minSpend: "₹66,420",
-            image:
-              "https://docs.google.com/spreadsheets/d/1kLNg0631V5LqVLx7NgUb2UXbI2SyHuy1y5vblBgEbWo/edit?gid=551119373#gid=551119373&range=K2",
-          },
-          {
-            id: 3,
-            title: "Hoarding,Aundh-Pune",
-            media: "Hoarding",
-            readers: "594773",
-            minSpend: "₹74,160",
-            image:
-              "https://docs.google.com/spreadsheets/d/1kLNg0631V5LqVLx7NgUb2UXbI2SyHuy1y5vblBgEbWo/edit?gid=551119373#gid=551119373&range=K2",
-          },
-          {
-            id: 4,
-            title: "Hoarding,Baner Road-Pune",
-            media: "Hoarding",
-            readers: "400000",
-            minSpend: "₹85,000",
-            image:
-              "https://docs.google.com/spreadsheets/d/1kLNg0631V5LqVLx7NgUb2UXbI2SyHuy1y5vblBgEbWo/edit?gid=551119373#gid=551119373&range=K2",
-          },
+      id: 1,
+      title: "Auto Branding, Shivajinagar",
+      media: "Rickshaw",
+      viewers: "200000",
+      minSpend: "₹30,000",
+      image: "/images/auto_shivajinagar.jpg",
+    },
+    {
+      id: 2,
+      title: "Auto Branding, Kothrud",
+      media: "Rickshaw",
+      viewers: "180000",
+      minSpend: "₹28,000",
+      image: "/images/auto_kothrud.jpg",
+    },
+    {
+      id: 3,
+      title: "Auto Branding, Baner",
+      media: "Rickshaw",
+      viewers: "160000",
+      minSpend: "₹25,000",
+      image: "/images/auto_baner.jpg",
+    },
+    {
+      id: 4,
+      title: "Auto Branding, Hinjewadi",
+      media: "Rickshaw",
+      viewers: "220000",
+      minSpend: "₹32,000",
+      image: "/images/auto_hinjewadi.jpg",
+    },
   ];
 
   return (
@@ -123,7 +120,6 @@ const BrowseHoarding = () => {
                 </ul>
               )}
             </div>
-
           </div>
 
           <div className="filter-group">
@@ -153,19 +149,11 @@ const BrowseHoarding = () => {
             <div className="breadcrumb">
               <a href="/">Home</a>
               <span>›</span>
-              <span>BillBoard</span>
+              <span>Rickshaw Branding</span>
             </div>
           </div>
 
           <div className="header-controls">
-            <div className="select-wrapper">
-              <select className="select" value={targetAudience} onChange={(e) => setTargetAudience(e.target.value)}>
-                <option value="">TARGET AUDIENCE</option>
-                <option value="youth">Youth</option>
-                <option value="adults">Adults</option>
-                <option value="seniors">Seniors</option>
-              </select> 
-            </div>
 
             <div className="select-wrapper">
               <select className="select" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
@@ -174,9 +162,9 @@ const BrowseHoarding = () => {
                 <option value="price-high">Price: High to Low</option>
               </select>
             </div>
-            </div>
+          </div>
           
-          <h1 className="page-title">Book BillBoard Ads Online At Lowest Rates</h1>
+          <h1 className="page-title">Book Rickshaw Ads Online At Lowest Rates</h1>
 
           <div className="hoarding-grid">
             {hoardings.map((hoarding) => (
@@ -188,8 +176,8 @@ const BrowseHoarding = () => {
                 <p className="hoarding-language">{hoarding.media}</p>
                 <div className="hoarding-stats">
                   <div className="stat-1">
-                    <img src="images/reader.png" alt="readers"/>
-                    <span>{hoarding.readers}</span>
+                    <img src="images/reader.png" alt="viewers"/>
+                    <span>{hoarding.viewers}</span>
                   </div>
                   <div className="stat-2">
                     <img src="images/saletag.png" alt="sale tag"/>
@@ -208,4 +196,4 @@ const BrowseHoarding = () => {
   );
 };
 
-export default BrowseHoarding;
+export default BrowseAuto;

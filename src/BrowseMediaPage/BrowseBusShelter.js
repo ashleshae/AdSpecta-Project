@@ -4,13 +4,41 @@ import React from "react";
 import Header from "../HomePage/components/ui/Header";
 import Navigation from "../HomePage/components/ui/Navigation";
 
-const locations = [
-  "Shivajinagar", "Hinjewadi", "Kothrud", "Baner", "Wakad", "Karvenagar", "Koregaon Park", "Viman Nagar", "Kharadi", "Magarpatta",
-  "Hadapsar", "Swargate", "Camp", "Yerwada", "Bavdhan", "Undri", "Wagholi", "Saswad", "Pirangut", "Mohamadwadi", "Lohegaon",
-  "Talegaon", "Kirkatwadi", "Bhosale Nagar", "Mamurdi", "Charoli", "Nandoshi", "Manjari", "Uruli Kanchan"
+const busStops = [
+  "Swargate", "Shivajinagar", "Pune Station", "Kothrud Depot", "Hadapsar Gadital", "Deccan Gymkhana",
+  "Viman Nagar", "Magarpatta City", "Baner Phata", "Aundh Gaon", "Pimple Saudagar", "Nigdi",
+  "Hinjewadi Phase 1", "Hinjewadi Phase 2", "Hinjewadi Phase 3", "Katraj", "Warje Malwadi",
+  "Kondhwa", "Bhosari", "Chinchwad", "FC Road", "JM Road", "Wanowrie", "NIBM Road"
 ];
 
-const BrowseHoarding = () => {
+const hoardings = [
+  {
+    id: 1,
+    title: "Bus Shelter Branding in Swargate",
+    media: "Bus Shelter Hoardings",
+    viewers: "200000",
+    minSpend: "₹30,000",
+    image: "/images/swargate_shelter.jpg",
+  },
+  {
+    id: 2,
+    title: "Bus Shelter Branding in Shivajinagar",
+    media: "Bus Shelter Hoardings",
+    viewers: "250000",
+    minSpend: "₹35,000",
+    image: "/images/shivajinagar_shelter.jpg",
+  },
+  {
+    id: 3,
+    title: "Bus Shelter Branding in Pune Station",
+    media: "Bus Shelter Hoardings",
+    viewers: "300000",
+    minSpend: "₹40,000",
+    image: "/images/pune_station_shelter.jpg",
+  },
+];
+
+const BrowseBusShelters = () => {
   const [targetAudience, setTargetAudience] = useState("")
   const [sortBy, setSortBy] = useState("top")
   const [searchTerm, setSearchTerm] = useState("");
@@ -18,13 +46,13 @@ const BrowseHoarding = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const filteredLocations = locations.filter(location => 
-    location.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredBusStops = busStops.filter(stop =>
+    stop.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleLocationSelect = (location) => {
-    setSelectedLocation(location);
-    setSearchTerm(location);
+  const handleLocationSelect = (stop) => {
+    setSelectedLocation(stop);
+    setSearchTerm(stop);
     setIsDropdownOpen(false);
   };
 
@@ -46,61 +74,24 @@ const BrowseHoarding = () => {
     };
   }, []);
 
-  const hoardings = [
-    {
-            id: 1,
-            title: "Hoarding,Airport Road-Pune",
-            media: "Hoarding",
-            readers: "750000",
-            minSpend: "₹1,01,520",
-            image:
-              "https://docs.google.com/spreadsheets/d/1kLNg0631V5LqVLx7NgUb2UXbI2SyHuy1y5vblBgEbWo/edit?gid=551119373#gid=551119373&range=K2",
-          },
-          {
-            id: 2,
-            title: "Hoarding,Alka Chowk-Pune",
-            media: "Hoarding",
-            readers: "366465",
-            minSpend: "₹66,420",
-            image:
-              "https://docs.google.com/spreadsheets/d/1kLNg0631V5LqVLx7NgUb2UXbI2SyHuy1y5vblBgEbWo/edit?gid=551119373#gid=551119373&range=K2",
-          },
-          {
-            id: 3,
-            title: "Hoarding,Aundh-Pune",
-            media: "Hoarding",
-            readers: "594773",
-            minSpend: "₹74,160",
-            image:
-              "https://docs.google.com/spreadsheets/d/1kLNg0631V5LqVLx7NgUb2UXbI2SyHuy1y5vblBgEbWo/edit?gid=551119373#gid=551119373&range=K2",
-          },
-          {
-            id: 4,
-            title: "Hoarding,Baner Road-Pune",
-            media: "Hoarding",
-            readers: "400000",
-            minSpend: "₹85,000",
-            image:
-              "https://docs.google.com/spreadsheets/d/1kLNg0631V5LqVLx7NgUb2UXbI2SyHuy1y5vblBgEbWo/edit?gid=551119373#gid=551119373&range=K2",
-          },
-  ];
-
   return (
     <div>
       <Header />
       <Navigation />
+
       <main className="main-content">
+        {/* Filters and Bus Shelter Branding Content */}
         <aside className="filters">
           <h2 className="filter-title">Filters</h2>
 
           <div className="filter-group">
-            <h3 className="filter-group-title">LOCATION</h3>
+            <h3 className="filter-group-title">BUS STOP</h3>
             <div className="dropdown-container" ref={dropdownRef}>
               <div className="input-wrapper">
                 <input 
                   type="text" 
                   className="select" 
-                  placeholder="Search Location" 
+                  placeholder="Search Bus Stop" 
                   value={searchTerm} 
                   onChange={(e) => {
                     setSearchTerm(e.target.value);
@@ -115,17 +106,15 @@ const BrowseHoarding = () => {
 
               {isDropdownOpen && (
                 <ul className="dropdown-list">
-                  {filteredLocations.map((location) => (
-                    <li key={location} onClick={() => handleLocationSelect(location)}>
-                      {location}
+                  {filteredBusStops.map((stop) => (
+                    <li key={stop} onClick={() => handleLocationSelect(stop)}>
+                      {stop}
                     </li>
                   ))}
                 </ul>
               )}
             </div>
-
           </div>
-
           <div className="filter-group">
             <h3 className="filter-group-title">CATEGORY</h3>
             <div className="checkbox-group">
@@ -153,7 +142,7 @@ const BrowseHoarding = () => {
             <div className="breadcrumb">
               <a href="/">Home</a>
               <span>›</span>
-              <span>BillBoard</span>
+              <span>Bus Shelter Branding</span>
             </div>
           </div>
 
@@ -175,9 +164,8 @@ const BrowseHoarding = () => {
               </select>
             </div>
             </div>
-          
-          <h1 className="page-title">Book BillBoard Ads Online At Lowest Rates</h1>
 
+          <h1 className="page-title">Book Bus Shelter Ads Online At Best Rates</h1>
           <div className="hoarding-grid">
             {hoardings.map((hoarding) => (
               <div key={hoarding.id} className="hoarding-card">
@@ -201,6 +189,7 @@ const BrowseHoarding = () => {
           </div>
         </div>
       </main>
+
       <footer>
         <p>&copy; 2025 AdSpecta. All rights reserved.</p>
       </footer>
@@ -208,4 +197,4 @@ const BrowseHoarding = () => {
   );
 };
 
-export default BrowseHoarding;
+export default BrowseBusShelters;
