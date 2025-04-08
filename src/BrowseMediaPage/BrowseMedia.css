@@ -280,7 +280,7 @@ body {
 
 .dropdown-list{
   max-height: 200px;
-  max-width: 215px;
+  max-width: 250px;
   overflow-y: scroll;
   border: 1px solid #ccc;
   border-radius: 4px ;
@@ -288,6 +288,9 @@ body {
   cursor: pointer;
 }
 
+.dropdown-item:hover {
+  color:blue;
+}
 .input-wrapper {
   display: flex;
   align-items: center;
@@ -385,6 +388,24 @@ body {
   right: 10px;
   transform: translateY(-50%);
   pointer-events: none;
+}
+
+.checkbox-container details {
+  margin-bottom: 10px;
+}
+
+.checkbox-container summary {
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.checkbox-container label {
+  display: block;
+  padding-left: 1rem;
+  margin: 2px 0;
+  cursor: pointer;
+  display: flex;
+  gap: 8px; 
 }
 
 

@@ -7,7 +7,7 @@ const GenreSection = () => {
     { name: "Metro", image: "images/metro.png", path: "/browse-metro" },
     { name: "BillBoard", image: "images/billboard.png", path: "/browse-hoarding" },
     { name: "Rickshaws", image: "images/rickshaw.png", path: "/browse-auto" },
-    { name: "Bus", image: "images/bus.png", path: "/browse-bus" },
+    // { name: "Bus", image: "images/bus.png", path: "/browse-bus" },
     { name: "Roadside Walls", image: "images/roadsideWall.png", path: "/browse-roadside-walls" },
     { name: "Bus Shelter", image: "images/busShelter.png", path: "/browse-bus-shelter" },
   ];

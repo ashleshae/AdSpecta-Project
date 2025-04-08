@@ -1,24 +1,94 @@
+
 import { useState, useRef, useEffect } from "react";
 import "./BrowseMedia.css";
 import React from "react";
 import Header from "../HomePage/components/ui/Header";
 import Navigation from "../HomePage/components/ui/Navigation";
-
-const locations = [
-  "Shivajinagar", "Hinjewadi", "Kothrud", "Baner", "Wakad", "Karvenagar", "Koregaon Park", "Viman Nagar", "Kharadi", "Magarpatta",
-  "Hadapsar", "Swargate", "Camp", "Yerwada", "Bavdhan", "Undri", "Wagholi", "Saswad", "Pirangut", "Mohamadwadi", "Lohegaon",
-  "Talegaon", "Kirkatwadi", "Bhosale Nagar", "Mamurdi", "Charoli", "Nandoshi", "Manjari", "Uruli Kanchan"
-];
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
+import { Link } from "react-router-dom";
 
 const BrowseHoarding = () => {
-  const [targetAudience, setTargetAudience] = useState("")
-  const [sortBy, setSortBy] = useState("top")
+  const [hoardings, setHoardings] = useState([]);
+  const [crowdLevel, setCrowdLevel] = useState(""); 
+  const [sortBy, setSortBy] = useState("top");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  
+  const areaArray = [
+    "Airport Road", "Alka Chowk", "Aundh", "Baner Road", "Baner Roadside", "Baner Road Way", "Baner Street",
+    "Bhookum", "Bhugaon", "Bhugaon Road", "Bigbazzar Chowk", "Bishop School", "Bundgarden", "Campeast Street",
+    "Campmg Road", "Cell Petrol Pump", "Chakan", "Dattawadi", "Daund Wakhari", "Deccancorner", "Deccant Junction",
+    "Dhanukarcolony", "Expressway", "Fakrihills", "Fatimanagar", "Garware College", "Dhanukar Colony",
+    "Ghotawade Road", "Gulmoharlawns", "Hande Wadi Road", "Handewadi", "Hinjawadi", "Hinjawadi Road", "Hotelnilkamal",
+    "Junabazar", "Jyotihotel Chowk", "Kalyani Nagar", "Kalyaniforge", "Kalyanjewellers", "Kamshetgaon",
+    "Kartrajkondhwa", "Karve Road", "Khadakwasla", "Kesnand Road", "Khadakwaslaentry", "Khandojibaba Chowk",
+    "Khandojibaba Chowkup", "Khedshivapur", "Kinarahotel", "Koregaonpark", "Kothrud Road", "Kumthekar Road",
+    "Kunjirwadi", "Kunjirwadi Chowk", "Kunthe Chowk", "Laxminarayan Chowk", "Laxmi Road", "Lohgaon Road",
+    "Lonitollnaka", "Lullanagar", "Magarpattabridge", "Manjari Phata", "Marunje", "Marunje Road", "M College",
+    "Mhatrebridge", "Moze College", "Mundhwa", "Nagar Road", "Nalstop Chowk", "Nandedphata", "Nibm Road", "Outgate",
+    "Pancardclub", "Paud Road"
+  ];
 
-  const filteredLocations = locations.filter(location => 
+  const handleCategoryChange = (e) => {
+    const { value, checked } = e.target;
+    setSelectedCategories((prev) =>
+      checked ? [...prev, value] : prev.filter((item) => item !== value)
+    );
+  };
+
+  useEffect(() => {
+    const fetchHoardings = async () => {
+      try {
+        const q = query(collection(db, "AdSpace_Data"), where("AdSpace_Type", "==", "Hoarding"));
+        const querySnapshot = await getDocs(q);
+
+        const allHoardings = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        let filtered = allHoardings;
+
+        if (selectedLocation.trim() !== "") {
+          const lowerSelected = selectedLocation.trim().toLowerCase();
+          filtered = filtered.filter((hoarding) =>
+            hoarding.Location?.toLowerCase().includes(lowerSelected)
+          );
+        }
+
+        if (selectedCategories.length > 0) {
+          filtered = filtered.filter((hoarding) => {
+            const tags = hoarding.Tags?.split(",").map(tag => tag.trim().toLowerCase()) || [];
+            return selectedCategories.some(cat => tags.includes(cat.toLowerCase()));
+          });
+        }
+
+        if (crowdLevel !== "") {
+          filtered = filtered.filter((hoarding) =>
+            hoarding["Crowd level"]?.toLowerCase() === crowdLevel.toLowerCase()
+          );
+        }
+
+        if (sortBy === "price-low") {
+          filtered.sort((a, b) => (a.Starting_Rate || 0) - (b.Starting_Rate || 0));
+        } else if (sortBy === "price-high") {
+          filtered.sort((a, b) => (b.Starting_Rate || 0) - (a.Starting_Rate || 0));
+        }
+
+        setHoardings(filtered);
+      } catch (error) {
+        console.error("Error fetching hoardings:", error);
+      }
+    };
+
+    fetchHoardings();
+  }, [selectedLocation, selectedCategories, crowdLevel, sortBy]);
+
+  const filteredLocations = areaArray.filter((location) =>
     location.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -40,172 +110,190 @@ const BrowseHoarding = () => {
         setIsDropdownOpen(false);
       }
     };
+  
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
-  const hoardings = [
-    {
-            id: 1,
-            title: "Hoarding,Airport Road-Pune",
-            media: "Hoarding",
-            readers: "750000",
-            minSpend: "₹1,01,520",
-            image:
-              "https://docs.google.com/spreadsheets/d/1kLNg0631V5LqVLx7NgUb2UXbI2SyHuy1y5vblBgEbWo/edit?gid=551119373#gid=551119373&range=K2",
-          },
-          {
-            id: 2,
-            title: "Hoarding,Alka Chowk-Pune",
-            media: "Hoarding",
-            readers: "366465",
-            minSpend: "₹66,420",
-            image:
-              "https://docs.google.com/spreadsheets/d/1kLNg0631V5LqVLx7NgUb2UXbI2SyHuy1y5vblBgEbWo/edit?gid=551119373#gid=551119373&range=K2",
-          },
-          {
-            id: 3,
-            title: "Hoarding,Aundh-Pune",
-            media: "Hoarding",
-            readers: "594773",
-            minSpend: "₹74,160",
-            image:
-              "https://docs.google.com/spreadsheets/d/1kLNg0631V5LqVLx7NgUb2UXbI2SyHuy1y5vblBgEbWo/edit?gid=551119373#gid=551119373&range=K2",
-          },
-          {
-            id: 4,
-            title: "Hoarding,Baner Road-Pune",
-            media: "Hoarding",
-            readers: "400000",
-            minSpend: "₹85,000",
-            image:
-              "https://docs.google.com/spreadsheets/d/1kLNg0631V5LqVLx7NgUb2UXbI2SyHuy1y5vblBgEbWo/edit?gid=551119373#gid=551119373&range=K2",
-          },
-  ];
-
-  return (
-    <div>
-      <Header />
-      <Navigation />
-      <main className="main-content">
-        <aside className="filters">
-          <h2 className="filter-title">Filters</h2>
-
-          <div className="filter-group">
-            <h3 className="filter-group-title">LOCATION</h3>
-            <div className="dropdown-container" ref={dropdownRef}>
-              <div className="input-wrapper">
-                <input 
-                  type="text" 
-                  className="select" 
-                  placeholder="Search Location" 
-                  value={searchTerm} 
-                  onChange={(e) => {
-                    setSearchTerm(e.target.value);
-                    setIsDropdownOpen(true);
-                  }} 
-                  onFocus={() => setIsDropdownOpen(true)}
-                />
-                {selectedLocation && (
-                  <button className="clear-icon" onClick={handleClearSelection}>✖</button>
+  
+  const renderCheckbox = (label) => (
+        <label key={label}>
+          <input
+            type="checkbox"
+            value={label}
+            checked={selectedCategories.includes(label)}
+            onChange={handleCategoryChange}
+          />
+          {label}
+        </label>
+      );
+    
+      const categoryData = {
+        "Education & Youth": ["College", "Education", "Youth", "Job Opportunities", "Kids"],
+        "Health & Wellness": [
+          "Health", "Wellness", "Fitness", "Beauty and Wellness", "Health and Wellness", "Beauty",
+          "Cosmetics", "Personal Care", "Lifestyle"
+        ],
+        "Technology & Digital": [
+          "Technology", "Digital", "Software", "E-commerce", "Gaming", "Electronics",
+          "Media", "Consumer Goods", "Social Media"
+        ],
+        "Marketing & Advertising": [
+          "Advertising", "Event", "Discount", "Seasonal Deals", "Festive", "Holiday", "Shopping"
+        ],
+        "Retail & Fashion": [
+          "Retail", "Fashion", "Luxury", "Design", "Furniture", "Home Decor"
+        ],
+        "Travel & Hospitality": [
+          "Travel", "Tourism", "Hospitality", "Food", "Nature", "Outdoor"
+        ],
+        "Entertainment & Culture": [
+          "Entertainment", "Music", "Art", "Culture", "Cultural", "Cinema Halls"
+        ],
+        "Business & Finance": [
+          "Business", "Finance", "Investment", "Legal Services", "Law"
+        ],
+        "Real Estate & Infrastructure": [
+          "Real Estate", "Construction"
+        ],
+        "Community & Non-Profits": [
+          "Community", "Local Business", "Charity", "Non-Profit", "Social Impact"
+        ],
+        "Automotive & Vehicles": [
+          "Automotive", "Automobile"
+        ],
+        "Environment & Sustainability": [
+          "Environmental", "Sustainability", "Gardens"
+        ],
+        "Places & Locations": [
+          "Tourist Area", "Airport", "Bus Station/Stop", "Metro Station", "Railway Station",
+          "Stadium", "Market Area", "Road Side", "Food Malls", "Mall", "Hospital", "Crowded"
+        ],
+        "Pet & Animals": [
+          "Pet Care", "Animals"
+        ]
+      };
+    
+return (
+      <div>
+        <Header />
+        <Navigation />
+        <main className="main-content">
+          <aside className="filters">
+            <h2 className="filter-title">Filters</h2>
+            <div className="filter-group">
+              <h3 className="filter-group-title">LOCATION</h3>
+              <div className="dropdown-container" ref={dropdownRef}>
+                <div className="input-wrapper">
+                  <input
+                    type="text"
+                    className="select"
+                    placeholder="Search Location"
+                    value={searchTerm}
+                    onChange={(e) => {
+                      setSearchTerm(e.target.value);
+                      setIsDropdownOpen(true);
+                    }}
+                    onFocus={() => setIsDropdownOpen(true)}
+                  />
+                  {selectedLocation && (
+                    <button className="clear-icon" onClick={handleClearSelection}>✖</button>
+                  )}
+                </div>
+                {isDropdownOpen && (
+                  <ul className="dropdown-list">
+                    {filteredLocations.map((location) => (
+                      <li
+                        key={location}
+                        onClick={() => handleLocationSelect(location)}
+                        className="dropdown-item"
+                      >
+                        {location}
+                      </li>
+                    ))}
+                  </ul>
                 )}
               </div>
+            </div>
+  
+            <div className="filter-group">
+              <h3 className="filter-group-title">CATEGORY</h3>
+              <div className="checkbox-container">
+                {Object.entries(categoryData).map(([group, labels]) => (
+                  <details key={group}>
+                    <summary>{group}</summary>
+                    {labels.map(renderCheckbox)}
+                  </details>
+                ))}
+              </div>
+            </div>
+          </aside>
+  
+          <div className="content-area">
+            <div className="content-header">
+              <div className="breadcrumb">
+                <a href="/">Home</a>
+                <span>→</span>
+                <Link to="/browse-hoarding" onClick={() => window.location.reload()} style={{ cursor: "pointer" }}>
+                  BillBoard
+                </Link>
+              </div>
+            </div>
 
-              {isDropdownOpen && (
-                <ul className="dropdown-list">
-                  {filteredLocations.map((location) => (
-                    <li key={location} onClick={() => handleLocationSelect(location)}>
-                      {location}
-                    </li>
-                  ))}
-                </ul>
+            <div className="header-controls">
+              <div className="select-wrapper">
+                <select className="select" value={crowdLevel} onChange={(e) => setCrowdLevel(e.target.value)}>
+                  <option value="">Crowd Level</option>
+                  <option value="low">Low</option>
+                  <option value="medium">Medium</option>
+                  <option value="high">High</option>
+                </select>
+              </div>
+  
+              <div className="select-wrapper">
+                <select className="select" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+                  <option value="top">Price</option>
+                  <option value="price-low"> Low to High</option>
+                  <option value="price-high"> High to Low</option>
+                </select>
+              </div>
+            </div>
+  
+            <h1 className="page-title">Book BillBoard Ads Online At Lowest Rates</h1>
+  
+            <div className="hoarding-grid">
+              {hoardings.length === 0 ? (
+                <p style={{ marginTop: "20px" }}>No hoardings available for this location.</p>
+              ) : (
+                hoardings.map((hoarding) => (
+                  <div key={hoarding.id} className="hoarding-card">
+                    <div className="hoarding-image">
+                      <img src={hoarding.image || "/placeholder.svg"} alt={hoarding.Area} />
+                    </div>
+                    <h3 className="hoarding-title">{hoarding.Area}</h3>
+                    <p className="hoarding-language">{hoarding.Location}</p>
+                    <div className="hoarding-stats">
+                      <div className="stat-1">
+                        <img src="images/reader.png" alt="readers" />
+                        <span>{hoarding["Crowd level"] || "N/A"}</span>
+                      </div>
+                      <div className="stat-2">
+                        <img src="images/saletag.png" alt="sale tag" />
+                        <span>₹{hoarding.Starting_Rate || "N/A"} Min Spend</span>
+                      </div>
+                    </div>
+                  </div>
+                ))
               )}
             </div>
-
           </div>
-
-          <div className="filter-group">
-            <h3 className="filter-group-title">CATEGORY</h3>
-            <div className="checkbox-group">
-              <label className="checkbox-label"><input type="checkbox" /> College</label>
-              <label className="checkbox-label"><input type="checkbox" /> Hospital</label>
-              <label className="checkbox-label"><input type="checkbox" /> Mall</label>
-              <label className="checkbox-label"><input type="checkbox" /> Road Side</label>
-              <label className="checkbox-label"><input type="checkbox" /> Food Malls</label>
-              <label className="checkbox-label"><input type="checkbox" /> Tourist area</label>
-              <label className="checkbox-label"><input type="checkbox" /> Cinema Halls</label>
-              <label className="checkbox-label"><input type="checkbox" /> Airport</label>
-              <label className="checkbox-label"><input type="checkbox" /> Stadium</label>
-              <label className="checkbox-label"><input type="checkbox" /> Gardens</label>
-              <label className="checkbox-label"><input type="checkbox" /> Crowded</label>
-              <label className="checkbox-label"><input type="checkbox" /> Market Area</label>
-              <label className="checkbox-label"><input type="checkbox" /> Railway Station</label>
-              <label className="checkbox-label"><input type="checkbox" /> Bus Station/Stop</label>
-              <label className="checkbox-label"><input type="checkbox" /> Metro Station</label>
-            </div>
-          </div>
-        </aside>
-
-        <div className="content-area">
-          <div className="content-header">
-            <div className="breadcrumb">
-              <a href="/">Home</a>
-              <span>›</span>
-              <span>BillBoard</span>
-            </div>
-          </div>
-
-          <div className="header-controls">
-            <div className="select-wrapper">
-              <select className="select" value={targetAudience} onChange={(e) => setTargetAudience(e.target.value)}>
-                <option value="">TARGET AUDIENCE</option>
-                <option value="youth">Youth</option>
-                <option value="adults">Adults</option>
-                <option value="seniors">Seniors</option>
-              </select> 
-            </div>
-
-            <div className="select-wrapper">
-              <select className="select" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                <option value="top">Top Searched</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-              </select>
-            </div>
-            </div>
-          
-          <h1 className="page-title">Book BillBoard Ads Online At Lowest Rates</h1>
-
-          <div className="hoarding-grid">
-            {hoardings.map((hoarding) => (
-              <div key={hoarding.id} className="hoarding-card">
-                <div className="hoarding-image">
-                  <img src={hoarding.image || "/placeholder.svg"} alt={hoarding.title} />
-                </div>
-                <h3 className="hoarding-title">{hoarding.title}</h3>
-                <p className="hoarding-language">{hoarding.media}</p>
-                <div className="hoarding-stats">
-                  <div className="stat-1">
-                    <img src="images/reader.png" alt="readers"/>
-                    <span>{hoarding.readers}</span>
-                  </div>
-                  <div className="stat-2">
-                    <img src="images/saletag.png" alt="sale tag"/>
-                    <span>{hoarding.minSpend} Min Spend</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </main>
-      <footer>
-        <p>&copy; 2025 AdSpecta. All rights reserved.</p>
-      </footer>
-    </div>
-  );
-};
-
-export default BrowseHoarding;
+        </main>
+        <footer>
+          <p>&copy; 2025 AdSpecta. All rights reserved.</p>
+        </footer>
+      </div>
+    );
+  };
+  
+  export default BrowseHoarding;

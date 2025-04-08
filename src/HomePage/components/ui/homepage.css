@@ -81,7 +81,7 @@
   }
 
   .main{
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background: linear-gradient(to right,#00AEEF, #0061A8);
     padding-top: 30px;
   }
 
@@ -771,4 +771,8 @@
 .support-image {
   width: 100%;
   max-width: 300px;
+}
+
+.channel {
+  cursor: pointer;
 }
