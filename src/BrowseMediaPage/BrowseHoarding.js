@@ -7,6 +7,7 @@ import Navigation from "../HomePage/components/ui/Navigation";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const BrowseHoarding = () => {
   const [hoardings, setHoardings] = useState([]);
@@ -235,7 +236,7 @@ return (
               <div className="breadcrumb">
                 <a href="/">Home</a>
                 <span>→</span>
-                <Link to="/browse-hoarding" onClick={() => window.location.reload()} style={{ cursor: "pointer" }}>
+                <Link to="/browse-hoarding" onClick={() => window.location.reload()} style={{ color: "black", cursor: "pointer" }}>
                   BillBoard
                 </Link>
               </div>
@@ -267,23 +268,29 @@ return (
                 <p style={{ marginTop: "20px" }}>No hoardings available for this location.</p>
               ) : (
                 hoardings.map((hoarding) => (
-                  <div key={hoarding.id} className="hoarding-card">
-                    <div className="hoarding-image">
-                      <img src={hoarding.image || "/placeholder.svg"} alt={hoarding.Area} />
-                    </div>
-                    <h3 className="hoarding-title">{hoarding.Area}</h3>
-                    <p className="hoarding-language">{hoarding.Location}</p>
-                    <div className="hoarding-stats">
-                      <div className="stat-1">
-                        <img src="images/reader.png" alt="readers" />
-                        <span>{hoarding["Crowd level"] || "N/A"}</span>
+                  <Link
+                    key={hoarding.AdSpace_id}
+                    to={`/details/${hoarding.AdSpace_id}`}
+                    className="hoarding-card-link"
+                  >
+                    <div className="hoarding-card">
+                      <div className="hoarding-image">
+                        <img src={hoarding.image || "/placeholder.svg"} alt={hoarding.Area} />
                       </div>
-                      <div className="stat-2">
-                        <img src="images/saletag.png" alt="sale tag" />
-                        <span>₹{hoarding.Starting_Rate || "N/A"} Min Spend</span>
+                      <h3 className="hoarding-title">{hoarding.Area}</h3>
+                      <p className="hoarding-language">{hoarding.Location}</p>
+                      <div className="hoarding-stats">
+                        <div className="stat-1">
+                          <img src="images/reader.png" alt="readers" />
+                          <span>{hoarding["Crowd level"] || "N/A"}</span>
+                        </div>
+                        <div className="stat-2">
+                          <img src="images/saletag.png" alt="sale tag" />
+                          <span>₹{hoarding.Starting_Rate || "N/A"} Min Spend</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 ))
               )}
             </div>

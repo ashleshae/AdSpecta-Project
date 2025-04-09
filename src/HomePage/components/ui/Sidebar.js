@@ -13,7 +13,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       <div className="sidebar-header">
         <div className="profile">
           <div className="profile-icon">
-            <img src="images/logo.png" alt="Logo" width="25" height="25" />
+            {/* <img src="images/logo.png" alt="Logo" width="25" height="25" /> */}
           </div>
           <span className="profile-name">Hello & Welcome</span>
         </div>

@@ -13,6 +13,8 @@ import ContactUs from './HomePage/components/ui/ContactUs';
 import BrowseBusShelters from './BrowseMediaPage/BrowseBusShelter';
 import BrowseBus from './BrowseMediaPage/BrowseBus';
 import BrowseRoadSideWalls from './BrowseMediaPage/BrowseRoadSideWalls';
+import FindMediaRates from "./HomePage/components/ui/FindMediaRates";
+import Details from './BrowseMediaPage/Details';
 
 const router = createBrowserRouter([
   {
@@ -88,6 +90,24 @@ const router = createBrowserRouter([
       <>
         <ScrollToTop />
         <BrowseRoadSideWalls />
+      </>
+    ),
+  },
+  {
+    path: '/media-rates',
+    element: (
+      <>
+        <ScrollToTop />
+        <FindMediaRates />
+      </>
+    ),
+  },
+  {
+    path: '/details/:adspaceId',
+    element: (
+      <>
+        <ScrollToTop />
+        <Details />
       </>
     ),
   },

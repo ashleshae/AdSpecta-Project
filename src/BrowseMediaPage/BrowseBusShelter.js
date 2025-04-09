@@ -225,8 +225,8 @@ const BrowseBusShelter = () => {
             <div className="breadcrumb">
               <a href="/">Home</a>
               <span>→</span>
-              <Link to="/browse-bus-shelter" onClick={() => window.location.reload()} style={{ cursor: "pointer" }}>
-                Bus Shelter
+              <Link to="/browse-bus-shelter" onClick={() => window.location.reload()} style={{ color: "black", cursor: "pointer" }}>
+                Bus Shelter Ads
               </Link>
             </div>
           </div>
@@ -257,6 +257,11 @@ const BrowseBusShelter = () => {
               <p style={{ marginTop: "20px" }}>No bus shelters available for this location.</p>
             ) : (
               busShelters.map((shelter) => (
+                <Link
+                  key={shelter.AdSpace_id}
+                  to={`/details/${shelter.AdSpace_id}`}
+                  className="hoarding-card-link"
+                >
                 <div key={shelter.id} className="hoarding-card">
                   <div className="hoarding-image">
                     <img src={shelter.image || "/placeholder.svg"} alt={shelter.Area} />
@@ -274,6 +279,7 @@ const BrowseBusShelter = () => {
                     </div>
                   </div>
                 </div>
+                </Link>
               ))
             )}
           </div>

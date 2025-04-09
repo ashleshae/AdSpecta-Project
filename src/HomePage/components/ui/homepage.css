@@ -236,7 +236,7 @@
   .faq-container h1 {
     text-align:left;
     margin-bottom: 20px;
-    color:#6a11cb;
+    color:#003366;
     font-size:24px;
     font-weight: 500;
     
@@ -247,7 +247,7 @@
     border-radius: 5px;
     margin-bottom: 10px;
     overflow: hidden;
-    color:#6a11cb;
+    color:#003366;
     width:1050px;
   }
   
@@ -274,7 +274,7 @@
   
   .toggle-icon {
     font-size: 20px;
-    color: #6a11cb;
+    color: #003366;
     cursor: pointer;
     width: 20px;
     height: 20px;
@@ -313,7 +313,7 @@
   width: 300px;
   height: 100%;
   background-color: white; /* White background for the rest */
-  color: #6a11cb;
+  color: #003366;
   transition: left 0.3s ease-in-out;
   z-index: 1000;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
@@ -325,7 +325,7 @@
 
 /* Sidebar Header */
 .sidebar-header {
-  background-color: #6a11cb; /* Purple background */
+  background-color: #003366; /* Purple background */
   color: white; /* White text */
   padding: 15px;
   display: flex;
@@ -340,7 +340,7 @@
 }
 
 .profile-icon {
-  background-color: #b081e3;
+  background-color: #1b5ea1;
   font-size: 25px;
   font-weight: bold;
   width: 40px;
@@ -384,14 +384,14 @@
 }
 
 .sidebar-menu li a {
-  color: #9e57eb;
+  color: #1b5ea1;
   text-decoration: none;
   font-size: 16px;
 }
 
 .sidebar-menu li a:hover {
   text-decoration: none;
-  color: #7b00ff;
+  color: #003366;
 }
 
 .sidebar-footer {
@@ -401,7 +401,7 @@
 }
 
 .logout-btn {
-  background-color: #6a11cb;
+  background-color: #003366;
   color: white;
   padding: 10px 20px;
   text-decoration: none;
@@ -412,7 +412,7 @@
 }
 
 .logout-btn:hover {
-  background-color: #6a11cb;
+  background-color: #00509e;
 }
 
 .navbar {
@@ -775,4 +775,153 @@
 
 .channel {
   cursor: pointer;
+}
+
+.cards{
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cards a,
+.cards a:visited,
+.cards a:hover,
+.cards a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Page container */
+.media-main-container {
+  background-color: white;
+  min-height: 100vh;
+  padding:  1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+}
+
+/* Heading and subtext */
+.media-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.media-subtext {
+  font-size: 1.1rem;
+  text-align: center;
+  /* max-width: 700px; */
+  margin-bottom: 2.5rem;
+}
+
+/* Colored box container */
+.media-colored-box {
+  background: linear-gradient(to right,#00AEEF, #0061A8);
+  padding: 3rem 2rem;
+  border-radius: 1.5rem;
+  max-width: 960px;
+  width: 100%;
+  color: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Feature grid */
+.media-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .media-features {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Feature box */
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.feature-box:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.feature-icon {
+  color: white;
+}
+
+.feature-title {
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+.feature-desc {
+  font-size: 0.875rem;
+  opacity: 0.9;
+}
+
+/* Search bar */
+.media-search-container {
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.media-search-input {
+  width: 100%;
+  padding: 0.75rem 3rem 0.75rem 1.5rem;
+  border-radius: 9999px;
+  border: none;
+  font-size: 1rem;
+  color: black;
+}
+
+.media-search-input::placeholder {
+  color: #999;
+}
+
+.media-search-button {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #003366;
+  cursor: pointer;
+}
+
+.override-bg > div {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.search {
+  position: relative;
+}
+
+.search input {
+  padding-right: 2.5rem; /* leave space for the icon inside */
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #003366; /* from your .icon class */
 }

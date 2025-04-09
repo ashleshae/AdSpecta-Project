@@ -1,12 +1,11 @@
-// HamburgerMenu.js
+
 import React from "react";
+import { Menu } from "lucide-react";
 
 const HamburgerMenu = ({ toggleSidebar }) => {
   return (
     <div className="hamburger-menu" onClick={toggleSidebar}>
-      <div>
-        <img src="images/menuIcon.png" alt="Menu" width="25" height="25" />
-      </div>
+      <Menu size={25} className="icon" />
     </div>
   );
 };

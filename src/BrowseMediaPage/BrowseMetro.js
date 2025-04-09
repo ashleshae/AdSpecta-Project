@@ -153,7 +153,7 @@ const BrowseMetro = () => {
             <div className="breadcrumb">
               <a href="/">Home</a>
               <span>→</span>
-              <Link to="/browse-metroads" onClick={() => window.location.reload()} style={{ cursor: "pointer" }}>
+              <Link to="/browse-metroads" onClick={() => window.location.reload()} style={{ color: "black", cursor: "pointer" }}>
                 Metro Ads
               </Link>
             </div>
@@ -185,6 +185,11 @@ const BrowseMetro = () => {
               <p style={{ marginTop: "20px" }}>No metro ads available for this location.</p>
             ) : (
               metroAds.map((ad) => (
+                <Link
+                    key={ad.AdSpace_id}
+                    to={`/details/${ad.AdSpace_id}`}
+                    className="hoarding-card-link"
+                >
                 <div key={ad.id} className="hoarding-card">
                   <div className="hoarding-image">
                     <img src={ad.image || "/placeholder.svg"} alt={ad.Area} />
@@ -202,6 +207,7 @@ const BrowseMetro = () => {
                     </div>
                   </div>
                 </div>
+                </Link>
               ))
             )}
           </div>

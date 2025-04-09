@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./homepage.css"; // Import styles
+import { Link } from "react-router-dom";
 
 const Carousel = () => {
   const texts = [
@@ -63,10 +64,12 @@ const Carousel = () => {
 
       {/* Cards Section */}
       <div className="cards">
-        <div className="card">
-          <h3>Find</h3>
-          <p>Media Rates</p>
-        </div>
+        <Link to="/media-rates">
+          <div className="card">
+            <h3>Find</h3>
+            <p>Media Rates</p>
+          </div>
+        </Link>
         <div className="card">
           <h3>Plan</h3>
           <p>Media Spend</p>

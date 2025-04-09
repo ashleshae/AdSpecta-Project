@@ -198,8 +198,8 @@ const BrowseRoadsideWalls = () => {
             <div className="breadcrumb">
               <a href="/">Home</a>
               <span>→</span>
-              <Link to="/browse-wallads" onClick={() => window.location.reload()} style={{ cursor: "pointer" }}>
-                Wall Ads
+              <Link to="/browse-wallads" onClick={() => window.location.reload()} style={{ color: "black", cursor: "pointer" }}>
+                RoadSide Wall Ads
               </Link>
             </div>
           </div>
@@ -230,6 +230,11 @@ const BrowseRoadsideWalls = () => {
               <p style={{ marginTop: "20px" }}>No wall ads available for this location.</p>
             ) : (
               wallAds.map((ad) => (
+                <Link
+                  key={ad.AdSpace_id}
+                  to={`/details/${ad.AdSpace_id}`}
+                  className="hoarding-card-link"
+                >
                 <div key={ad.id} className="hoarding-card">
                   <div className="hoarding-image">
                     <img src={ad.image || "/placeholder.svg"} alt={ad.Area} />
@@ -247,6 +252,7 @@ const BrowseRoadsideWalls = () => {
                     </div>
                   </div>
                 </div>
+                </Link>
               ))
             )}
           </div>

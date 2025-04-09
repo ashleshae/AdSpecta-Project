@@ -149,7 +149,7 @@ const BrowseAuto = () => {
             <div className="breadcrumb">
               <a href="/">Home</a>
               <span>→</span>
-              <Link to="/browse-auto" onClick={() => window.location.reload()} style={{ cursor: "pointer" }}>Auto Ads</Link>
+              <Link to="/browse-auto" onClick={() => window.location.reload()} style={{ color: "black", cursor: "pointer" }}>Auto Rickshaws Ads</Link>
             </div>
           </div>
 
@@ -179,6 +179,11 @@ const BrowseAuto = () => {
               <p style={{ marginTop: "20px" }}>No Auto Ads available for this area.</p>
             ) : (
               autos.map((ad) => (
+                <Link
+                  key={ad.AdSpace_id}
+                  to={`/details/${ad.AdSpace_id}`}
+                  className="hoarding-card-link"
+                >
                 <div key={ad.id} className="hoarding-card">
                   <div className="hoarding-image">
                     <img src={ad.image || "/placeholder.svg"} alt={ad.Area} />
@@ -196,6 +201,7 @@ const BrowseAuto = () => {
                     </div>
                   </div>
                 </div>
+                </Link>
               ))
             )}
           </div>
