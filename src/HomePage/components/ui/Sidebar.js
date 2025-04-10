@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./homepage.css";
 import Login from "./Login";
 import Signup from "./Signup";
+import { Link } from "react-router-dom";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const [isLoginOpen, setLoginOpen] = useState(false);
@@ -24,7 +25,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
       <ul className="sidebar-menu">
         <li><a href="/" onClick={toggleSidebar}><span>Home</span></a></li>
-        <li><a href="#">Find Media Rates</a></li>
+        <li><a href="/media-rates">Find Media Rates</a></li>
         <li><a href="#">Poster Designing AI Tool</a></li>
         <li><a href="#">My Dashboard</a></li>
         <li><a href="#">My Profile</a></li>

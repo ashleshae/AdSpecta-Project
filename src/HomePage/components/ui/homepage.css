@@ -500,22 +500,14 @@
   z-index: 1000;
 }
 
-/* White Box for Login */
-.login-box {
-  background: white;
-  padding:20px;
-  border-radius: 8px;
-  width: 370px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  /* text-align: center; */
-  position: relative;
-}
+
+
 
 /* Cross (X) Button */
 .close-btn {
   position: absolute;
   top: 20%;
-  right: 32%;
+  right: 20%;
   font-size: 28px;
   background: none;
   border: none;
@@ -582,6 +574,9 @@
   font-size: 16px;
 }
 
+.signup-text a:hover{
+  color: #00509e;
+}
 .signup-box {
   background: white;
   padding:20px;
@@ -925,3 +920,150 @@
   pointer-events: none;
   color: #003366; /* from your .icon class */
 }
+
+.suggestions-list {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9); /* semi-transparent white */
+  color: black; /* black text */
+  width: 350px; /* increased width */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  max-height: 150px; /* reduced height */
+  overflow-y: auto;
+  z-index: 1000;
+  list-style-type: none;
+  margin: 0;
+  padding: 5px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.suggestions-list li {
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.suggestions-list li:hover {
+  background-color: rgba(0, 123, 255, 0.1); /* light blue hover */
+}
+
+.login-left {
+  flex: 1;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width:100px;
+}
+
+.login-image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.login-contain {
+  display: flex;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 700px; 
+  max-width: 95%;
+}
+
+.login-box {
+  padding: 20px;
+  border-radius: 8px;
+  flex: 1;
+  box-shadow: none; /* optional, already applied on parent */
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  text-decoration:none;
+  color: #003366;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.back-btn:hover {
+  color: #00509e;
+}
+
+.required {
+  color: red;
+}
+
+.password-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-field input {
+  flex: 1;
+}
+
+.toggle-password {
+  margin-left: 8px;
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+}
+.login-btn {
+  position: relative;
+  cursor: pointer;
+}
+
+/* .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  top: 30px;
+  right: 0;
+  min-width: 100px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 10;
+  border-radius: 6px;
+  overflow: hidden;
+} */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  top: 30px;
+  right: 0;
+  width: 100px; /* instead of min-width */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 10;
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 14px; /* optional: makes text smaller */
+  padding: 5px 0;   /* optional: reduces height padding */
+}
+
+
+.login-btn:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+}
+.dropdown-content a {
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none;
+}
+
