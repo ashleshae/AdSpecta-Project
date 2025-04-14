@@ -1,4 +1,4 @@
-// // Signup.js
+// Signup.js
 
 import React, { useState } from "react";
 import "./homepage.css";

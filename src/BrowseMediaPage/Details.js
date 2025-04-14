@@ -98,7 +98,7 @@ const Details = () => {
                 </Link>
                 <span>→</span>
                 <span>
-                {adData.AdSpace_Type} - {adData.Location},{adspaceId}
+                {adData.AdSpace_Type} - {adData.Location}, {adspaceId}
                 </span>
             </>
             )}
@@ -111,11 +111,11 @@ const Details = () => {
         </h1>
 
         <div className="details-top-section">
-          <img
-            src="https://via.placeholder.com/400x250"
-            alt="Hoarding"
-            className="details-image"
-          />
+        <img
+          src={adData.ImageURL || "https://via.placeholder.com/400x250"}
+          alt="AdSpace"
+          className="details-image"
+        />
 
           <div className="details-info-box">
             <div className="details-info-row">
@@ -124,7 +124,7 @@ const Details = () => {
                 <span className="details-info-label">MEDIA TYPE</span>
               </div>
               {/* <div className="details-info-item">
-                <h4>{adData.Avilability}</h4>
+                <h4>{adData.Availability}</h4>
                 <span className="details-info-label">AVAILABILITY</span>
               </div> */}
             </div>
@@ -143,16 +143,10 @@ const Details = () => {
         <div className="details-insights-section">
           <h2 className="details-subheading">Key Insights</h2>
           <div className="details-insight-boxes">
-            {/* <div className="details-insight-item">
-              <span className="details-insight-label">CITY</span>
-              <h4>{adData.City}</h4>
-            </div> */}
             <div className="details-insight-item">
               <span className="details-insight-label">LANDMARK</span>
               <h4>
-                {(adData.AdSpace_Type === "Auto" || adData.AdSpace_Type === "Wall Ads")
-                  ? adData.Location
-                  : adData.Area}
+                <h4>{adData.Area}</h4>
               </h4>
             </div>
             <div className="details-insight-item">
@@ -162,6 +156,10 @@ const Details = () => {
             <div className="details-insight-item">
               <span className="details-insight-label">STARTING RATE</span>
               <h4>₹{adData.Starting_Rate}</h4>
+            </div>
+            <div className="details-insight-item">
+              <span className="details-insight-label">AVAILABILITY</span>
+              <h4>{adData.Availability === "Available" ? "Booked" : "Available"}</h4>
             </div>
           </div>
 

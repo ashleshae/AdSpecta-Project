@@ -12,14 +12,13 @@ const BrowseAuto = () => {
   const [autos, setAutos] = useState([]);
   const [crowdLevel, setCrowdLevel] = useState("");
   const [sortBy, setSortBy] = useState("top");
-  const [searchAreaTerm, setSearchAreaTerm] = useState("");
-  const [selectedArea, setSelectedArea] = useState("");
+  const [searchLocationTerm, setSearchLocationTerm] = useState("");
+  const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const areaArray = ["Swargate", "Shivajinagar", "Pune Railway Station", "Camp Area (MG Road)", "Kothrud Depot", "Deccan Gymkhana", "Hinjawadi Phase 1", "Pimpri", "Katraj", "Aundh", "Wakad", "Karve Nagar", "Yerawada", "Chinchwad", "Nanded City", "Fursungi"];
-
+  const locationArray = ["Swargate", "Shivajinagar", "Pune Railway Station", "Camp Area (MG Road)", "Kothrud Depot", "Deccan Gymkhana", "Hinjawadi Phase 1", "Pimpri", "Katraj", "Aundh", "Wakad", "Karve Nagar", "Yerawada", "Chinchwad", "Nanded City", "Fursungi"];
 
   const handleCategoryChange = (e) => {
     const { value, checked } = e.target;
@@ -41,10 +40,10 @@ const BrowseAuto = () => {
 
         let filtered = allAds;
 
-        if (selectedArea.trim() !== "") {
-          const lowerSelected = selectedArea.trim().toLowerCase();
+        if (selectedLocation.trim() !== "") {
+          const lowerSelected = selectedLocation.trim().toLowerCase();
           filtered = filtered.filter((ad) =>
-            ad.Location?.toLowerCase().includes(lowerSelected)
+            ad.Area?.toLowerCase().includes(lowerSelected)
           );
         }
 
@@ -74,21 +73,21 @@ const BrowseAuto = () => {
     };
 
     fetchAutoAds();
-  }, [selectedArea, selectedCategories, crowdLevel, sortBy]);
+  }, [selectedLocation, selectedCategories, crowdLevel, sortBy]);
 
-  const filteredAreas = areaArray.filter((area) =>
-    area.toLowerCase().includes(searchAreaTerm.toLowerCase())
+  const filteredLocations = locationArray.filter((loc) =>
+    loc.toLowerCase().includes(searchLocationTerm.toLowerCase())
   );
 
-  const handleAreaSelect = (area) => {
-    setSelectedArea(area);
-    setSearchAreaTerm(area);
+  const handleLocationSelect = (loc) => {
+    setSelectedLocation(loc);
+    setSearchLocationTerm(loc);
     setIsDropdownOpen(false);
   };
 
-  const handleClearAreaSelection = () => {
-    setSelectedArea("");
-    setSearchAreaTerm("");
+  const handleClearLocationSelection = () => {
+    setSelectedLocation("");
+    setSearchLocationTerm("");
     setIsDropdownOpen(false);
   };
 
@@ -113,29 +112,29 @@ const BrowseAuto = () => {
         <aside className="filters">
           <h2 className="filter-title">Filters</h2>
           <div className="filter-group">
-            <h3 className="filter-group-title">AREA</h3>
+            <h3 className="filter-group-title">LOCATION</h3>
             <div className="dropdown-container" ref={dropdownRef}>
               <div className="input-wrapper">
                 <input
                   type="text"
                   className="select"
-                  placeholder="Search Area"
-                  value={searchAreaTerm}
+                  placeholder="Search Location"
+                  value={searchLocationTerm}
                   onChange={(e) => {
-                    setSearchAreaTerm(e.target.value);
+                    setSearchLocationTerm(e.target.value);
                     setIsDropdownOpen(true);
                   }}
                   onFocus={() => setIsDropdownOpen(true)}
                 />
-                {selectedArea && (
-                  <button className="clear-icon" onClick={handleClearAreaSelection}>✖</button>
+                {selectedLocation && (
+                  <button className="clear-icon" onClick={handleClearLocationSelection}>✖</button>
                 )}
               </div>
               {isDropdownOpen && (
                 <ul className="dropdown-list">
-                  {filteredAreas.map((area) => (
-                    <li key={area} onClick={() => handleAreaSelect(area)} className="dropdown-item">
-                      {area}
+                  {filteredLocations.map((loc) => (
+                    <li key={loc} onClick={() => handleLocationSelect(loc)} className="dropdown-item">
+                      {loc}
                     </li>
                   ))}
                 </ul>
@@ -176,7 +175,7 @@ const BrowseAuto = () => {
 
           <div className="hoarding-grid">
             {autos.length === 0 ? (
-              <p style={{ marginTop: "20px" }}>No Auto Ads available for this area.</p>
+              <p style={{ marginTop: "20px" }}>No Auto Ads available for this location.</p>
             ) : (
               autos.map((ad) => (
                 <Link
@@ -184,23 +183,23 @@ const BrowseAuto = () => {
                   to={`/details/${ad.AdSpace_id}`}
                   className="hoarding-card-link"
                 >
-                <div key={ad.id} className="hoarding-card">
-                  <div className="hoarding-image">
-                    <img src={ad.image || "/placeholder.svg"} alt={ad.Area} />
-                  </div>
-                  <h3 className="hoarding-title">{ad.Location}</h3>
-                  <p className="hoarding-language">{ad.Area}</p>
-                  <div className="hoarding-stats">
-                    <div className="stat-1">
-                      <img src="/images/reader.png" alt="crowd" />
-                      <span>{ad["Crowd level"] || "N/A"}</span>
+                  <div key={ad.id} className="hoarding-card">
+                    <div className="hoarding-image">
+                      <img src={ad.ImageURL || "/placeholder.svg"} alt={ad.Location} />
                     </div>
-                    <div className="stat-2">
-                      <img src="/images/saletag.png" alt="rate" />
-                      <span>₹{ad.Starting_Rate || "N/A"} / Vehicle</span>
+                    <h3 className="hoarding-title">{ad.Area}</h3>
+                    <p className="hoarding-language">{ad.Location}</p>
+                    <div className="hoarding-stats">
+                      <div className="stat-1">
+                        <img src="/images/reader.png" alt="crowd" />
+                        <span>{ad["Crowd level"] || "N/A"}</span>
+                      </div>
+                      <div className="stat-2">
+                        <img src="/images/saletag.png" alt="rate" />
+                        <span>₹{ad.Starting_Rate || "N/A"} / Vehicle</span>
+                      </div>
                     </div>
                   </div>
-                </div>
                 </Link>
               ))
             )}

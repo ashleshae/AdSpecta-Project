@@ -71,12 +71,8 @@ const Carousel = () => {
           </div>
         </Link>
         <div className="card">
-          <h3>Plan</h3>
-          <p>Media Spend</p>
-        </div>
-        <div className="card">
-          <h3>Buy</h3>
-          <p>Media Spots</p>
+          <h3>Design</h3>
+          <p>AI Poster</p>
         </div>
       </div>
     </section>

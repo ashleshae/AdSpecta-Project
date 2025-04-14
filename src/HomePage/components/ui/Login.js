@@ -4,47 +4,60 @@ import "./homepage.css";
 import { db } from "../../../firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
 
+
 const Login = ({ onClose, onSignupClick }) => {
   const [userType, setUserType] = useState("buyer");
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false); // 👈 for toggling password
-
+  
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async () => {
     let newErrors = {};
-
+  
     if (!formData.username.trim()) newErrors.username = "Username is required";
     if (!formData.password.trim()) newErrors.password = "Password is required";
-
+  
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
-
+  
     try {
       const collectionName = userType === "buyer" ? "AdSpace_Buyer_Data" : "AdSpace_Seller_Data";
-
+      
       const q = query(
         collection(db, collectionName),
         where("Name", "==", formData.username),
         where("Password", "==", formData.password)
       );
-
+  
       const querySnapshot = await getDocs(q);
-
+  
       if (!querySnapshot.empty) {
-        const userData = querySnapshot.docs[0].data();
+        const doc = querySnapshot.docs[0];
+        const userData = doc.data();
         const fullName = userData.Name;
         const firstName = fullName.split(" ")[0];
-
-        // Save name to localStorage
+        const profileImage = userData.ProfileImage || ""; // Add this line 👈
+        
+        // Save to localStorage
         localStorage.setItem("userFirstName", firstName);
-        localStorage.setItem("isLoggedIn", "true");
-
-        alert("Login successful!");
-        onClose(true); // ✅ Login success, tell Header to update state
+        localStorage.setItem("userImage", userData.ProfileImage || ""); // 👈 Save profile image URL
+        localStorage.setItem("isLoggedIn", "true");    
+        localStorage.setItem("userEmail", userData.Email || "");
+        localStorage.setItem("userRole", userType);
+        localStorage.setItem("userId", userType === "buyer" ? userData.Buyer_Id : userData.seller_id);
+        if (userType === "buyer") {
+          localStorage.setItem("buyer_id", userData.Buyer_Id);
+        } else {
+          localStorage.setItem("seller_id", userData.seller_id);
+        }
+        
+          
+        // alert("Login successful!");
+        onClose(true);
       } else {
         alert("Invalid credentials. Please try again.");
       }
@@ -79,7 +92,7 @@ const Login = ({ onClose, onSignupClick }) => {
             <button className={userType === "buyer" ? "active" : ""} onClick={() => handleUserTypeChange("buyer")}>
               Login as Buyer
             </button>
-            <button className={userType === "owner" ? "active" : ""} onClick={() => handleUserTypeChange("owner")}>
+            <button className={userType === "seller" ? "active" : ""} onClick={() => handleUserTypeChange("seller")}>
               Login as Seller
             </button>
           </div>
@@ -129,3 +142,4 @@ const Login = ({ onClose, onSignupClick }) => {
 };
 
 export default Login;
+

@@ -15,11 +15,22 @@ import BrowseBus from './BrowseMediaPage/BrowseBus';
 import BrowseRoadSideWalls from './BrowseMediaPage/BrowseRoadSideWalls';
 import FindMediaRates from "./HomePage/components/ui/FindMediaRates";
 import Details from './BrowseMediaPage/Details';
+import Login from "./HomePage/components/ui/Login";
+import Profile from "./HomePage/components/ui/Profile";
+import PostAd from './HomePage/components/ui/PostAd';
+import SeeMyPost from './HomePage/components/ui/SeeMyPost';
+import EditAd from './HomePage/components/ui/EditAd';
+import Dashboard from './HomePage/components/ui/Dashboard';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: (
+      <>
+        <ScrollToTop />
+        <App />
+      </>
+    ),
   },
   {
     path: '/aboutus',
@@ -108,6 +119,60 @@ const router = createBrowserRouter([
       <>
         <ScrollToTop />
         <Details />
+      </>
+    ),
+  },
+  {
+    path: '/login',
+    element: (
+      <>
+        <ScrollToTop />
+        <Login />
+      </>
+    ),
+  },
+  {
+    path: '/profile',
+    element: (
+      <>
+        <ScrollToTop />
+        <Profile />
+      </>
+    ),
+  },
+  {
+    path: '/seller/post-ad',
+    element: (
+      <>
+        <ScrollToTop />
+        <PostAd />
+      </>
+    ),
+  },
+  {
+    path: '/seller/my-post',
+    element: (
+      <>
+        <ScrollToTop />
+        <SeeMyPost />
+      </>
+    ),
+  },
+  {
+    path: '/seller/edit-ad/:id',
+    element: (
+      <>
+        <ScrollToTop />
+        <EditAd />
+      </>
+    ),
+  },
+  {
+    path: '/dashboard',
+    element: (
+      <>
+        <ScrollToTop />
+        <Dashboard/>
       </>
     ),
   },

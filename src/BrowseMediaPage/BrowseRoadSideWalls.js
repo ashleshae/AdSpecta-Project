@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from "react";
 import "./BrowseMedia.css";
 import React from "react";
@@ -12,13 +13,12 @@ const BrowseRoadsideWalls = () => {
   const [crowdLevel, setCrowdLevel] = useState("");
   const [sortBy, setSortBy] = useState("top");
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedLocation, setSelectedLocation] = useState("");
+  const [selectedArea, setSelectedArea] = useState("");
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const areaArray = ["Baner Road", "Aundh", "Kothrud", "Shivajinagar", "FC Road", "Hadapsar", "Swargate", "Camp", "Viman Nagar", "Karve Nagar", "Koregaon Park", "Pimple Saudagar", "Wakad", "Katraj", "Magarpatta", "Kharadi", "Bavdhan", "Sinhagad Road", "Yerawada"];
-
 
   const handleCategoryChange = (e) => {
     const { value, checked } = e.target;
@@ -30,7 +30,7 @@ const BrowseRoadsideWalls = () => {
   useEffect(() => {
     const fetchWallAds = async () => {
       try {
-        const q = query(collection(db, "AdSpace_Data"), where("AdSpace_Type", "==", "Wall Ads"));
+        const q = query(collection(db, "AdSpace_Data"), where("AdSpace_Type", "==", "Roadside Walls"));
         const querySnapshot = await getDocs(q);
 
         const allWallAds = querySnapshot.docs.map((doc) => ({
@@ -40,10 +40,10 @@ const BrowseRoadsideWalls = () => {
 
         let filtered = allWallAds;
 
-        if (selectedLocation.trim() !== "") {
-          const lowerSelected = selectedLocation.trim().toLowerCase();
+        if (selectedArea.trim() !== "") {
+          const lowerSelected = selectedArea.trim().toLowerCase();
           filtered = filtered.filter((ad) =>
-            ad.Location?.toLowerCase().includes(lowerSelected)
+            ad.Area?.toLowerCase().includes(lowerSelected)
           );
         }
 
@@ -73,20 +73,20 @@ const BrowseRoadsideWalls = () => {
     };
 
     fetchWallAds();
-  }, [selectedLocation, selectedCategories, crowdLevel, sortBy]);
+  }, [selectedArea, selectedCategories, crowdLevel, sortBy]);
 
-  const filteredLocations = areaArray.filter((location) =>
-    location.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredAreas = areaArray.filter((area) =>
+    area.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleLocationSelect = (location) => {
-    setSelectedLocation(location);
-    setSearchTerm(location);
+  const handleAreaSelect = (area) => {
+    setSelectedArea(area);
+    setSearchTerm(area);
     setIsDropdownOpen(false);
   };
 
   const handleClearSelection = () => {
-    setSelectedLocation("");
+    setSelectedArea("");
     setSearchTerm("");
     setIsDropdownOpen(false);
   };
@@ -137,7 +137,6 @@ const BrowseRoadsideWalls = () => {
     ]
   };
 
-
   return (
     <div>
       <Header />
@@ -146,13 +145,13 @@ const BrowseRoadsideWalls = () => {
         <aside className="filters">
           <h2 className="filter-title">Filters</h2>
           <div className="filter-group">
-            <h3 className="filter-group-title">LOCATION</h3>
+            <h3 className="filter-group-title">AREA</h3>
             <div className="dropdown-container" ref={dropdownRef}>
               <div className="input-wrapper">
                 <input
                   type="text"
                   className="select"
-                  placeholder="Search Location"
+                  placeholder="Search Area"
                   value={searchTerm}
                   onChange={(e) => {
                     setSearchTerm(e.target.value);
@@ -160,19 +159,19 @@ const BrowseRoadsideWalls = () => {
                   }}
                   onFocus={() => setIsDropdownOpen(true)}
                 />
-                {selectedLocation && (
+                {selectedArea && (
                   <button className="clear-icon" onClick={handleClearSelection}>✖</button>
                 )}
               </div>
               {isDropdownOpen && (
                 <ul className="dropdown-list">
-                  {filteredLocations.map((location) => (
+                  {filteredAreas.map((area) => (
                     <li
-                      key={location}
-                      onClick={() => handleLocationSelect(location)}
+                      key={area}
+                      onClick={() => handleAreaSelect(area)}
                       className="dropdown-item"
                     >
-                      {location}
+                      {area}
                     </li>
                   ))}
                 </ul>
@@ -227,7 +226,7 @@ const BrowseRoadsideWalls = () => {
 
           <div className="hoarding-grid">
             {wallAds.length === 0 ? (
-              <p style={{ marginTop: "20px" }}>No wall ads available for this location.</p>
+              <p style={{ marginTop: "20px" }}>No wall ads available for this area.</p>
             ) : (
               wallAds.map((ad) => (
                 <Link
@@ -235,23 +234,23 @@ const BrowseRoadsideWalls = () => {
                   to={`/details/${ad.AdSpace_id}`}
                   className="hoarding-card-link"
                 >
-                <div key={ad.id} className="hoarding-card">
-                  <div className="hoarding-image">
-                    <img src={ad.image || "/placeholder.svg"} alt={ad.Area} />
-                  </div>
-                  <h3 className="hoarding-title">{ad.Location}</h3>
-                  <p className="hoarding-language">{ad.Area}</p>
-                  <div className="hoarding-stats">
-                    <div className="stat-1">
-                      <img src="images/reader.png" alt="readers" />
-                      <span>{ad["Crowd level"] || "N/A"}</span>
+                  <div key={ad.id} className="hoarding-card">
+                    <div className="hoarding-image">
+                      <img src={ad.ImageURL || "/placeholder.svg"} alt={ad.Location} />
                     </div>
-                    <div className="stat-2">
-                      <img src="images/saletag.png" alt="sale tag" />
-                      <span>₹{ad.Starting_Rate || "N/A"} Min Spend</span>
+                    <h3 className="hoarding-title">{ad.Area}</h3>
+                    <p className="hoarding-language">{ad.Location}</p>
+                    <div className="hoarding-stats">
+                      <div className="stat-1">
+                        <img src="images/reader.png" alt="readers" />
+                        <span>{ad["Crowd level"] || "N/A"}</span>
+                      </div>
+                      <div className="stat-2">
+                        <img src="images/saletag.png" alt="sale tag" />
+                        <span>₹{ad.Starting_Rate || "N/A"} Min Spend</span>
+                      </div>
                     </div>
                   </div>
-                </div>
                 </Link>
               ))
             )}

@@ -275,7 +275,7 @@ return (
                   >
                     <div className="hoarding-card">
                       <div className="hoarding-image">
-                        <img src={hoarding.image || "/placeholder.svg"} alt={hoarding.Area} />
+                        <img src={hoarding.ImageURL || "/placeholder.svg"} alt={hoarding.Area} />
                       </div>
                       <h3 className="hoarding-title">{hoarding.Area}</h3>
                       <p className="hoarding-language">{hoarding.Location}</p>

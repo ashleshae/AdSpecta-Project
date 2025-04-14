@@ -192,7 +192,7 @@ const BrowseMetro = () => {
                 >
                 <div key={ad.id} className="hoarding-card">
                   <div className="hoarding-image">
-                    <img src={ad.image || "/placeholder.svg"} alt={ad.Area} />
+                    <img src={ad.ImageURL || "/placeholder.svg"} alt={ad.Area} />
                   </div>
                   <h3 className="hoarding-title">{ad.AdSpace_Type}</h3>
                   <p className="hoarding-language">{ad.Location}</p>

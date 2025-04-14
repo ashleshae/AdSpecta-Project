@@ -116,24 +116,12 @@ const Header = () => {
         <a href="/contactus">Contact Us</a>
 
         <div className="login-container">
-          {/* {isLoggedIn ? (
-            <div className="login-btn">
-              <LogIn className="icon" />
-              <a>{userFirstName}</a>
-            </div>
-          ) : (
-            <div className="login-btn" onClick={() => setLoginOpen(true)}>
-              <LogIn className="icon" />
-              <a href="#">Login</a>
-            </div>
-          )} */}
           {isLoggedIn ? (
             <div className="login-btn dropdown">
               <LogIn className="icon" />
               <a>{userFirstName}</a>
               <div className="dropdown-content">
                 <a href="/profile">Profile</a>
-                {/* <a href="/dashboard">Dashboard</a> */}
                 <a
                   href="#"
                   onClick={() => {

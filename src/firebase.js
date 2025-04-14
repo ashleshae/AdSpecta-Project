@@ -1,6 +1,7 @@
 
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore"; // For Firestore
+import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth"; // ✅ Add this line
 
 const firebaseConfig = {
     apiKey: "AIzaSyBG7GDRyFANNMSh2_JvMSMTMsLcnAaVLn8",
@@ -11,12 +12,13 @@ const firebaseConfig = {
     appId: "1:794254859674:web:b027861d3073999191ae23",
     measurementId: "G-4YFTWM82V1"
 };
-  
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Firestore
+// Initialize Firestore and Auth
 const db = getFirestore(app);
+const auth = getAuth(app); // ✅ Add this line
 
-// Export the database to use in components
-export  { db };
+// Export both
+export { db, auth }; // ✅ Now both are available for import

@@ -1,0 +1,398 @@
+.post-ad-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #f7f7f7;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .post-ad-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .post-ad-form .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .post-ad-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  
+  .post-ad-form input,
+  .post-ad-form select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .btn.post-btn {
+    padding: 10px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .btn.post-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Ensure the HTML and body elements take full height */
+html, body {
+    height: 100%;
+    margin: 0; /* Reset default margin */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Make the content area take up the available space */
+  .profile-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+ /* Ensure the HTML and body elements take full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Container for the Post Ad content */
+  .post-ad-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Align form vertically in the middle */
+    padding: 20px;
+  }
+  
+  /* Form styling */
+  .post-ad-form {
+    display: flex;
+    flex-direction: column;
+    /* gap: 15px; */
+    max-width: 600px;
+    /* margin: 0 auto; */
+  }
+  
+  /* Footer styling */
+  footer {
+    margin-top: auto;
+    /* background-color: #f1f1f1; */
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .my-media-ads-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  .ads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .ad-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  
+  .ad-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .ad-card img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-top:10px;
+  }
+  
+  .ad-info {
+    padding: 10px;
+  }
+  
+  .ad-info h3 {
+    margin: 5px 0;
+    font-size: 18px;
+  }
+  
+  /* details.css */
+
+.see-my-post-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.see-my-post-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: white;
+}
+
+.ads-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.ad-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ad-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.ad-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.ad-details {
+  padding: 1rem;
+}
+
+.ad-details h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+.ad-details p {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.ad-details strong {
+  color: #000;
+}
+
+.edit-ad-container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+}
+
+.edit-ad-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.edit-ad-container label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.edit-ad-container input,
+.edit-ad-container select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.edit-ad-container button {
+  width: 150px;
+  padding: 10px;
+  background-color: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.edit-ad-container {
+  max-width: 600px;
+  /* margin: auto; */
+  padding: 20px;
+}
+
+.edit-ad-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 0px;
+}
+
+/* Removes underline from Link component */
+.ad-card-link {
+  text-decoration: none;
+}
+
+.ad-card {
+  width: 350px; /* Specify a width for the ad card */
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center; /* Center text horizontally */
+}
+
+.ad-card:hover {
+  transform: scale(1.01); /* Slight hover effect */
+}
+
+.ad-image {
+  width: 100%; /* Makes image fill the width of the card */
+  height: 200px;
+  object-fit: cover;
+}
+
+.ad-details {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally in ad details */
+  justify-content: center; /* Center content vertically */
+}
+
+.ad-details h4 {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.ad-details p {
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+.ads-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.ads-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Default to center the cards */
+  gap: 20px; /* Space between cards */
+}
+
+.ads-grid > .ad-card-link {
+  flex: 1 1 calc(33.33% - 20px); /* This makes each card take 1/3 of the container width minus the gap, if there's enough space */
+  max-width: 350px; /* Max width for each card */
+  display: flex;
+  justify-content: center; /* Center the card within its container */
+}
+
+/* Ensure proper alignment when there's only one or two cards */
+.ads-grid > .ad-card-link:only-child {
+  flex: 1 1 100%; /* Full width for a single card */
+  justify-content: center; /* Center it */
+}
+
+.ads-grid > .ad-card-link:nth-child(2):only-of-type {
+  flex: 1 1 48%; /* When there are two cards, each takes up 48% of the container width */
+  justify-content: space-between; /* Spread them apart */
+}
+
+.ads-grid > .ad-card-link:nth-child(3):only-of-type {
+  flex: 1 1 48%; /* When there are two cards, each takes up 48% of the container width */
+  justify-content: space-between; /* Spread them apart */
+}
+
+.ads-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* details.css */
+.ads-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
+  gap: 20px; /* space between cards */
+  margin-top: 20px;
+}
+
+.ad-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.ad-card:hover {
+  transform: scale(1.05);
+}
+
+.ad-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.ad-details {
+  margin-top: 10px;
+}
+
+.ad-details h4 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.ad-details p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+  .ads-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .ads-grid {
+    grid-template-columns: 1fr; /* 1 column for mobile screens */
+  }
+}

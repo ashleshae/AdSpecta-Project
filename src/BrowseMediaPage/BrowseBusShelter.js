@@ -264,7 +264,7 @@ const BrowseBusShelter = () => {
                 >
                 <div key={shelter.id} className="hoarding-card">
                   <div className="hoarding-image">
-                    <img src={shelter.image || "/placeholder.svg"} alt={shelter.Area} />
+                    <img src={shelter.ImageURL || "/placeholder.svg"} alt={shelter.Area} />
                   </div>
                   <h3 className="hoarding-title">{shelter.Area}</h3>
                   <p className="hoarding-language">{shelter.Location}</p>
