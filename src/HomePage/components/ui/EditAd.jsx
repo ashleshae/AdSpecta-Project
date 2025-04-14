@@ -1,10 +1,9 @@
-
 import React, { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";  // import useNavigate
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { db } from "../../../firebase";
-import Header from "./Header";
-import Navigation from "./Navigation";
+import { db } from "../../../firebase.js";
+import Header from "./Header.jsx";
+import Navigation from "./Navigation.jsx";
 import axios from "axios";
 
 const EditAd = () => {
@@ -80,7 +79,7 @@ const EditAd = () => {
         Area: address,
         Location: location,
         Dimension: dimension,
-        Rate: Number(rate), 
+        Rate: Number(rate),
         Availability: availability,
         CrowdLevel: crowdLevel,
         Tags: tags,
@@ -101,7 +100,7 @@ const EditAd = () => {
       <Header />
       <Navigation />
       <div className="edit-ad-container">
-      <button 
+      <button
         onClick={() => navigate("/seller/my-post")}
         style={{
             padding: "5px 5px",
@@ -114,7 +113,7 @@ const EditAd = () => {
             display: "inline-flex",
             alignItems: "center",
             justifyContent: "center",
-            width: "50px", 
+            width: "50px",
             gap: "8px"
         }}
         >
@@ -168,11 +167,11 @@ const EditAd = () => {
 
         <div className="form-group">
         <label>Rate:</label>
-        <input 
-            type="number" 
-            value={rate} 
-            onChange={(e) => setRate(e.target.value)} 
-            required 
+        <input
+            type="number"
+            value={rate}
+            onChange={(e) => setRate(e.target.value)}
+            required
         />
         </div>
 

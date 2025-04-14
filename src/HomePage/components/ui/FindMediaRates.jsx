@@ -1,10 +1,9 @@
-
 import React, { useState } from "react";
 import { Search, Heart, ShoppingBag, BarChart3 } from "lucide-react";
-import "./homepage.css"; 
-import Header from "./Header";
-import Navigation from "./Navigation";
-import GenreSection from "./GenreSection";
+import "./homepage.css";
+import Header from "./Header.jsx";
+import Navigation from "./Navigation.jsx";
+import GenreSection from "./GenreSection.jsx";
 import { useNavigate } from "react-router-dom";
 
 const FindMediaRates = () => {
@@ -12,7 +11,16 @@ const FindMediaRates = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
-  const adSpaceTypes = ["Hoarding", "BillBoard", "Bus Shelter", "Metro", "Auto", "Wall Ads", "Rickshaws", "RoadSide Walls"];
+  const adSpaceTypes = [
+    "Hoarding",
+    "BillBoard",
+    "Bus Shelter",
+    "Metro",
+    "Auto",
+    "Wall Ads",
+    "Rickshaws",
+    "RoadSide Walls",
+  ];
 
   const handleSearchChange = (e) => {
     const value = e.target.value;
@@ -70,7 +78,8 @@ const FindMediaRates = () => {
         <div className="media-colored-box">
           <h1 className="media-heading">Find Media Rates</h1>
           <p className="media-subtext">
-            AdSpecta provides you easy and direct access to 100s of media options across genres.
+            AdSpecta provides you easy and direct access to 100s of media
+            options across genres.
           </p>
 
           <div>
@@ -88,7 +97,10 @@ const FindMediaRates = () => {
             </div>
 
             {/* Updated Search Bar with Suggestions */}
-            <div className="media-search-container" style={{ position: "relative" }}>
+            <div
+              className="media-search-container"
+              style={{ position: "relative" }}
+            >
               <input
                 type="text"
                 placeholder="Search Channel, Media"

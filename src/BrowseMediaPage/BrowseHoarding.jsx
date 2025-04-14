@@ -1,24 +1,23 @@
-
 import { useState, useRef, useEffect } from "react";
 import "./BrowseMedia.css";
 import React from "react";
-import Header from "../HomePage/components/ui/Header";
-import Navigation from "../HomePage/components/ui/Navigation";
+import Header from "../HomePage/components/ui/Header.jsx";
+import Navigation from "../HomePage/components/ui/Navigation.jsx";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "../firebase";
+import { db } from "../firebase.js";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const BrowseHoarding = () => {
   const [hoardings, setHoardings] = useState([]);
-  const [crowdLevel, setCrowdLevel] = useState(""); 
+  const [crowdLevel, setCrowdLevel] = useState("");
   const [sortBy, setSortBy] = useState("top");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
-  
+
   const areaArray = [
     "Airport Road", "Alka Chowk", "Aundh", "Baner Road", "Baner Roadside", "Baner Road Way", "Baner Street",
     "Bhookum", "Bhugaon", "Bhugaon Road", "Bigbazzar Chowk", "Bishop School", "Bundgarden", "Campeast Street",
@@ -111,13 +110,13 @@ const BrowseHoarding = () => {
         setIsDropdownOpen(false);
       }
     };
-  
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  
+
   const renderCheckbox = (label) => (
         <label key={label}>
           <input
@@ -129,7 +128,7 @@ const BrowseHoarding = () => {
           {label}
         </label>
       );
-    
+
       const categoryData = {
         "Education & Youth": ["College", "Education", "Youth", "Job Opportunities", "Kids"],
         "Health & Wellness": [
@@ -175,7 +174,7 @@ const BrowseHoarding = () => {
           "Pet Care", "Animals"
         ]
       };
-    
+
 return (
       <div>
         <Header />
@@ -217,7 +216,7 @@ return (
                 )}
               </div>
             </div>
-  
+
             <div className="filter-group">
               <h3 className="filter-group-title">CATEGORY</h3>
               <div className="checkbox-container">
@@ -230,7 +229,7 @@ return (
               </div>
             </div>
           </aside>
-  
+
           <div className="content-area">
             <div className="content-header">
               <div className="breadcrumb">
@@ -251,7 +250,7 @@ return (
                   <option value="high">High</option>
                 </select>
               </div>
-  
+
               <div className="select-wrapper">
                 <select className="select" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
                   <option value="top">Price</option>
@@ -260,9 +259,9 @@ return (
                 </select>
               </div>
             </div>
-  
+
             <h1 className="page-title">Book BillBoard Ads Online At Lowest Rates</h1>
-  
+
             <div className="hoarding-grid">
               {hoardings.length === 0 ? (
                 <p style={{ marginTop: "20px" }}>No hoardings available for this location.</p>
@@ -302,5 +301,5 @@ return (
       </div>
     );
   };
-  
+
   export default BrowseHoarding;

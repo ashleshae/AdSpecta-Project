@@ -1,9 +1,8 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import "./homepage.css";
-import Header from "./Header";
+import Header from "./Header.jsx";
 import { useNavigate } from "react-router-dom";
-import Navigation from "./Navigation";
+import Navigation from "./Navigation.jsx";
 import { Link } from 'react-router-dom';
 import {
   doc,
@@ -13,8 +12,8 @@ import {
   where,
   getDocs,
 } from "firebase/firestore";
-import { db } from "../../../firebase";
-import { uploadImageToCloudinary } from "../../../utils/cloudinaryUpload";
+import { db } from "../../../firebase.js";
+import { uploadImageToCloudinary } from "../../../utils/cloudinaryUpload.js";
 
 const Profile = () => {
   const [userData, setUserData] = useState({
@@ -49,7 +48,7 @@ const Profile = () => {
       fetchUserData(userRole, userId); // otherwise fetch profile data
     }
   }, [navigate, userId, userRole]);
-  
+
   const fetchUserData = async (role, userId) => {
     try {
       const collectionName =
@@ -283,7 +282,7 @@ const Profile = () => {
             </div>
 
             {/* 👇 SHOW SELLER BUTTONS WHEN NOT IN PASSWORD EDIT MODE */}
-            
+
 
             {showPasswordSection && (
               <div className="password-section">
@@ -339,7 +338,7 @@ const Profile = () => {
                 <button className="btn post-ad-btn" onClick={handlePostAd}>
                   Post Your Ad
                 </button>
-                
+
                 <button className="btn view-posts-btn" onClick={handleSeePosts}>
                   See Uploaded Posts
                 </button>

@@ -1,4 +1,3 @@
-
 // import React from 'react';
 // import './details.css';
 // import Header from "./Header";
@@ -70,27 +69,27 @@
 // };
 
 // export default Dashboard;
-import React, { useEffect, useState } from 'react';
-import './details.css';
-import Header from "./Header";
-import Navigation from "./Navigation";
+import React, { useEffect, useState } from "react";
+import "./details.css";
+import Header from "./Header.jsx";
+import Navigation from "./Navigation.jsx";
 import {
   CurrencyRupeeIcon,
   ChartBarIcon,
   PlayCircleIcon,
-  StopIcon
-} from '@heroicons/react/24/outline';
+  StopIcon,
+} from "@heroicons/react/24/outline";
 
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from '../../../firebase'; // adjust path as needed
-import { getAuth } from 'firebase/auth';
+import { db } from "../../../firebase"; // adjust path as needed
+import { getAuth } from "firebase/auth";
 
 const Dashboard = () => {
   const [summary, setSummary] = useState({
     totalSpend: 0,
     totalCampaigns: 0,
     liveCampaigns: 0,
-    endedCampaigns: 0
+    endedCampaigns: 0,
   });
 
   useEffect(() => {
@@ -134,9 +133,8 @@ const Dashboard = () => {
           totalSpend,
           totalCampaigns,
           liveCampaigns,
-          endedCampaigns
+          endedCampaigns,
         });
-
       } catch (err) {
         console.error("Error fetching campaign data:", err);
       }
@@ -150,7 +148,9 @@ const Dashboard = () => {
       <Header />
       <Navigation />
       <div className="dashboard-container p-6">
-        <h2 className="section-title text-2xl font-semibold mb-6">Your Campaigns</h2>
+        <h2 className="section-title text-2xl font-semibold mb-6">
+          Your Campaigns
+        </h2>
 
         <div className="campaign-summary flex flex-col items-center gap-6">
           <div className="summary-card">

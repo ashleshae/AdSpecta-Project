@@ -1,30 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './HomePage/homeflow.css';
-import App from './HomePage/homeflow';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./HomePage/homeflow.css";
+import App from "./HomePage/homeflow.jsx";
 import ScrollToTop from "./HomePage/components/ui/ScrollToTop";
-import reportWebVitals from './reportWebVitals';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import BrowseHoarding from './BrowseMediaPage/BrowseHoarding';
-import BrowseAuto from './BrowseMediaPage/BrowseAuto';
-import BrowseMetro from './BrowseMediaPage/BrowseMetro';
-import AboutUs from './HomePage/components/ui/AboutUs';
-import ContactUs from './HomePage/components/ui/ContactUs';
-import BrowseBusShelters from './BrowseMediaPage/BrowseBusShelter';
-import BrowseBus from './BrowseMediaPage/BrowseBus';
-import BrowseRoadSideWalls from './BrowseMediaPage/BrowseRoadSideWalls';
+import reportWebVitals from "./reportWebVitals";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import BrowseHoarding from "./BrowseMediaPage/BrowseHoarding";
+import BrowseAuto from "./BrowseMediaPage/BrowseAuto.jsx";
+import BrowseMetro from "./BrowseMediaPage/BrowseMetro";
+import AboutUs from "./HomePage/components/ui/AboutUs";
+import ContactUs from "./HomePage/components/ui/ContactUs";
+import BrowseBusShelters from "./BrowseMediaPage/BrowseBusShelter";
+import BrowseBus from "./BrowseMediaPage/BrowseBus";
+import BrowseRoadSideWalls from "./BrowseMediaPage/BrowseRoadSideWalls.jsx";
 import FindMediaRates from "./HomePage/components/ui/FindMediaRates";
-import Details from './BrowseMediaPage/Details';
+import Details from "./BrowseMediaPage/Details";
 import Login from "./HomePage/components/ui/Login";
 import Profile from "./HomePage/components/ui/Profile";
-import PostAd from './HomePage/components/ui/PostAd';
-import SeeMyPost from './HomePage/components/ui/SeeMyPost';
-import EditAd from './HomePage/components/ui/EditAd';
-import Dashboard from './HomePage/components/ui/Dashboard';
+import PostAd from "./HomePage/components/ui/PostAd";
+import SeeMyPost from "./HomePage/components/ui/SeeMyPost";
+import EditAd from "./HomePage/components/ui/EditAd";
+import Dashboard from "./HomePage/components/ui/Dashboard.jsx";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: (
       <>
         <ScrollToTop />
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/aboutus',
+    path: "/aboutus",
     element: (
       <>
         <ScrollToTop />
@@ -42,16 +42,16 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/contactus',
-    element:(
+    path: "/contactus",
+    element: (
       <>
         <ScrollToTop />
-        <ContactUs/>
+        <ContactUs />
       </>
     ),
   },
   {
-    path: '/browse-hoarding',
+    path: "/browse-hoarding",
     element: (
       <>
         <ScrollToTop />
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/browse-auto',
+    path: "/browse-auto",
     element: (
       <>
         <ScrollToTop />
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/browse-metro',
+    path: "/browse-metro",
     element: (
       <>
         <ScrollToTop />
@@ -78,7 +78,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/browse-bus-shelter',
+    path: "/browse-bus-shelter",
     element: (
       <>
         <ScrollToTop />
@@ -87,7 +87,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/browse-bus',
+    path: "/browse-bus",
     element: (
       <>
         <ScrollToTop />
@@ -96,7 +96,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/browse-roadside-walls',
+    path: "/browse-roadside-walls",
     element: (
       <>
         <ScrollToTop />
@@ -105,7 +105,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/media-rates',
+    path: "/media-rates",
     element: (
       <>
         <ScrollToTop />
@@ -114,7 +114,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/details/:adspaceId',
+    path: "/details/:adspaceId",
     element: (
       <>
         <ScrollToTop />
@@ -123,7 +123,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/login',
+    path: "/login",
     element: (
       <>
         <ScrollToTop />
@@ -132,7 +132,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/profile',
+    path: "/profile",
     element: (
       <>
         <ScrollToTop />
@@ -141,7 +141,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/seller/post-ad',
+    path: "/seller/post-ad",
     element: (
       <>
         <ScrollToTop />
@@ -150,7 +150,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/seller/my-post',
+    path: "/seller/my-post",
     element: (
       <>
         <ScrollToTop />
@@ -159,7 +159,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/seller/edit-ad/:id',
+    path: "/seller/edit-ad/:id",
     element: (
       <>
         <ScrollToTop />
@@ -168,18 +168,17 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/dashboard',
+    path: "/dashboard",
     element: (
       <>
         <ScrollToTop />
-        <Dashboard/>
+        <Dashboard />
       </>
     ),
   },
- 
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
@@ -187,4 +186,3 @@ root.render(
 );
 
 reportWebVitals();
-

@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react"; 
-import { collection, query, where, getDocs } from "firebase/firestore"; 
-import { db } from "../../../firebase"; 
-import Header from "./Header"; 
-import Navigation from "./Navigation"; 
-import "./details.css"; 
-import { Link, useNavigate } from "react-router-dom"; 
+import React, { useEffect, useState } from "react";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "../../../firebase.js";
+import Header from "./Header.jsx";
+import Navigation from "./Navigation.jsx";
+import "./details.css";
+import { Link, useNavigate } from "react-router-dom";
 
-const SeeMyPost = () => { 
-  const [ads, setAds] = useState([]); 
+const SeeMyPost = () => {
+  const [ads, setAds] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const sellerId = localStorage.getItem("userId");
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const SeeMyPost = () => {
           where("Seller_id", "==", sellerId)
         );
         const querySnapshot = await getDocs(q);
-        
+
         const adList = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
@@ -43,7 +43,7 @@ const SeeMyPost = () => {
       <Header />
       <Navigation />
       <div className="see-my-post-container">
-        <button 
+        <button
           onClick={() => navigate("/profile")}
           style={{
             padding: "5px",

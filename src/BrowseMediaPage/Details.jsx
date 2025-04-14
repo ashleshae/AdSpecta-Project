@@ -1,10 +1,9 @@
-
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { db } from "../firebase";
+import { db } from "../firebase.js";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import Header from "../HomePage/components/ui/Header";
-import Navigation from "../HomePage/components/ui/Navigation";
+import Header from "../HomePage/components/ui/Header.jsx";
+import Navigation from "../HomePage/components/ui/Navigation.jsx";
 import { Link } from "react-router-dom";
 import "./BrowseMedia.css";
 

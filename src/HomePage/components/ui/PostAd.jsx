@@ -1,10 +1,8 @@
-
-
 import React, { useState, useEffect, useRef } from "react";
-import Header from "./Header";
-import Navigation from "./Navigation";
+import Header from "./Header.jsx";
+import Navigation from "./Navigation.jsx";
 import "./details.css";
-import { db } from "../../../firebase";
+import { db } from "../../../firebase.js";
 import { useNavigate } from "react-router-dom";
 import {
   addDoc,
@@ -68,10 +66,13 @@ const PostAd = () => {
     formData.append("cloud_name", "dfmgvui9m");
 
     try {
-      const res = await fetch("https://api.cloudinary.com/v1_1/dfmgvui9m/image/upload", {
-        method: "POST",
-        body: formData,
-      });
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/dfmgvui9m/image/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
       const data = await res.json();
       setImageURL(data.secure_url);
     } catch (error) {
@@ -82,7 +83,9 @@ const PostAd = () => {
 
   const generateUniqueAdSpaceId = async (type, state, city) => {
     const firstLetter = (str) => str?.charAt(0)?.toUpperCase() || "X";
-    const prefix = `${firstLetter(type)}${firstLetter(state)}${firstLetter(city)}`;
+    const prefix = `${firstLetter(type)}${firstLetter(state)}${firstLetter(
+      city
+    )}`;
     let uniqueId;
     let exists = true;
 
@@ -169,30 +172,34 @@ const PostAd = () => {
       <Header />
       <Navigation />
       <div className="post-ad-container">
-      <button 
-        onClick={() => navigate("/profile")}
-        style={{
-          padding: "5px 5px",
-          backgroundColor: "#f1f1f1",
-          color: "#333",
-          border: "1px solid #ddd",
-          borderRadius: "5px",
-          fontSize: "22px",
-          cursor: "pointer",
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "50px", 
-          gap: "8px"
-        }}
-      >
-        ←
-      </button>
+        <button
+          onClick={() => navigate("/profile")}
+          style={{
+            padding: "5px 5px",
+            backgroundColor: "#f1f1f1",
+            color: "#333",
+            border: "1px solid #ddd",
+            borderRadius: "5px",
+            fontSize: "22px",
+            cursor: "pointer",
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "50px",
+            gap: "8px",
+          }}
+        >
+          ←
+        </button>
         <h2>Post Your Advertisement</h2>
         <form className="post-ad-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Choose Media Type:</label>
-            <select value={mediaType} onChange={(e) => setMediaType(e.target.value)} required>
+            <select
+              value={mediaType}
+              onChange={(e) => setMediaType(e.target.value)}
+              required
+            >
               <option value="">-- Select Media --</option>
               <option value="Hoarding">Hoarding</option>
               <option value="Bus Shelter">Bus Shelter</option>
@@ -270,7 +277,10 @@ const PostAd = () => {
 
           <div className="form-group">
             <label>Available:</label>
-            <select value={availability} onChange={(e) => setAvailability(e.target.value === "true")}>
+            <select
+              value={availability}
+              onChange={(e) => setAvailability(e.target.value === "true")}
+            >
               <option value={true}>Yes</option>
               <option value={false}>No</option>
             </select>
@@ -278,7 +288,11 @@ const PostAd = () => {
 
           <div className="form-group">
             <label>Crowd Level:</label>
-            <select value={crowdLevel} onChange={(e) => setCrowdLevel(e.target.value)} required>
+            <select
+              value={crowdLevel}
+              onChange={(e) => setCrowdLevel(e.target.value)}
+              required
+            >
               <option value="">-- Select Crowd Level --</option>
               <option value="High">High</option>
               <option value="Medium">Medium</option>
@@ -309,7 +323,11 @@ const PostAd = () => {
 
           {imageURL && (
             <div style={{ textAlign: "center" }}>
-              <img src={imageURL} alt="Uploaded" style={{ maxHeight: "200px", maxWidth: "200px" }} />
+              <img
+                src={imageURL}
+                alt="Uploaded"
+                style={{ maxHeight: "200px", maxWidth: "200px" }}
+              />
               <br />
               <button
                 type="button"

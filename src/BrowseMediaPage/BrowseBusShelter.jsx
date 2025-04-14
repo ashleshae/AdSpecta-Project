@@ -1,12 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 import "./BrowseMedia.css";
 import React from "react";
-import Header from "../HomePage/components/ui/Header";
-import Navigation from "../HomePage/components/ui/Navigation";
+import Header from "../HomePage/components/ui/Header.jsx";
+import Navigation from "../HomePage/components/ui/Navigation.jsx";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "../firebase";
+import { db } from "../firebase.js";
 import { Link } from "react-router-dom";
-
 
 const BrowseBusShelter = () => {
   const [busShelters, setBusShelters] = useState([]);
@@ -18,8 +17,25 @@ const BrowseBusShelter = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const areaArray = ["Viman Nagar", "Koregaon Park", "Baner Road", "Camp Road", "Budhwar Peth", "Kharadi - Hadapsar", "Viman Naagr", "Hadapsar", "Baner-Balewadi Rd.", "Viman Nagar Road", "Nagar Road", "R.M.D. College", "Kalyani Nagar", "Pune-Station Road.", "Shivaji Nagar", "Khondwa", "Karve Nagar"];
-
+  const areaArray = [
+    "Viman Nagar",
+    "Koregaon Park",
+    "Baner Road",
+    "Camp Road",
+    "Budhwar Peth",
+    "Kharadi - Hadapsar",
+    "Viman Naagr",
+    "Hadapsar",
+    "Baner-Balewadi Rd.",
+    "Viman Nagar Road",
+    "Nagar Road",
+    "R.M.D. College",
+    "Kalyani Nagar",
+    "Pune-Station Road.",
+    "Shivaji Nagar",
+    "Khondwa",
+    "Karve Nagar",
+  ];
 
   const handleCategoryChange = (e) => {
     const { value, checked } = e.target;
@@ -31,7 +47,10 @@ const BrowseBusShelter = () => {
   useEffect(() => {
     const fetchBusShelters = async () => {
       try {
-        const q = query(collection(db, "AdSpace_Data"), where("AdSpace_Type", "==", "Bus Shelter"));
+        const q = query(
+          collection(db, "AdSpace_Data"),
+          where("AdSpace_Type", "==", "Bus Shelter")
+        );
         const querySnapshot = await getDocs(q);
 
         const allBusShelters = querySnapshot.docs.map((doc) => ({
@@ -50,21 +69,30 @@ const BrowseBusShelter = () => {
 
         if (selectedCategories.length > 0) {
           filtered = filtered.filter((item) => {
-            const tags = item.Tags?.split(",").map(tag => tag.trim().toLowerCase()) || [];
-            return selectedCategories.some(cat => tags.includes(cat.toLowerCase()));
+            const tags =
+              item.Tags?.split(",").map((tag) => tag.trim().toLowerCase()) ||
+              [];
+            return selectedCategories.some((cat) =>
+              tags.includes(cat.toLowerCase())
+            );
           });
         }
 
         if (crowdLevel !== "") {
-          filtered = filtered.filter((item) =>
-            item["Crowd level"]?.toLowerCase() === crowdLevel.toLowerCase()
+          filtered = filtered.filter(
+            (item) =>
+              item["Crowd level"]?.toLowerCase() === crowdLevel.toLowerCase()
           );
         }
 
         if (sortBy === "price-low") {
-          filtered.sort((a, b) => (a.Starting_Rate || 0) - (b.Starting_Rate || 0));
+          filtered.sort(
+            (a, b) => (a.Starting_Rate || 0) - (b.Starting_Rate || 0)
+          );
         } else if (sortBy === "price-high") {
-          filtered.sort((a, b) => (b.Starting_Rate || 0) - (a.Starting_Rate || 0));
+          filtered.sort(
+            (a, b) => (b.Starting_Rate || 0) - (a.Starting_Rate || 0)
+          );
         }
 
         setBusShelters(filtered);
@@ -104,66 +132,119 @@ const BrowseBusShelter = () => {
     </label>
   );
 
-   useEffect(() => {
-      const handleClickOutside = (event) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-          setIsDropdownOpen(false);
-        }
-      };
-    
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, []);
-    
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const categoryData = {
-    "Education & Youth": ["College", "Education", "Youth", "Job Opportunities", "Kids"],
+    "Education & Youth": [
+      "College",
+      "Education",
+      "Youth",
+      "Job Opportunities",
+      "Kids",
+    ],
     "Health & Wellness": [
-      "Health", "Wellness", "Fitness", "Beauty and Wellness", "Health and Wellness", "Beauty",
-      "Cosmetics", "Personal Care", "Lifestyle"
+      "Health",
+      "Wellness",
+      "Fitness",
+      "Beauty and Wellness",
+      "Health and Wellness",
+      "Beauty",
+      "Cosmetics",
+      "Personal Care",
+      "Lifestyle",
     ],
     "Technology & Digital": [
-      "Technology", "Digital", "Software", "E-commerce", "Gaming", "Electronics",
-      "Media", "Consumer Goods", "Social Media"
+      "Technology",
+      "Digital",
+      "Software",
+      "E-commerce",
+      "Gaming",
+      "Electronics",
+      "Media",
+      "Consumer Goods",
+      "Social Media",
     ],
     "Marketing & Advertising": [
-      "Advertising", "Event", "Discount", "Seasonal Deals", "Festive", "Holiday", "Shopping"
+      "Advertising",
+      "Event",
+      "Discount",
+      "Seasonal Deals",
+      "Festive",
+      "Holiday",
+      "Shopping",
     ],
     "Retail & Fashion": [
-      "Retail", "Fashion", "Luxury", "Design", "Furniture", "Home Decor"
+      "Retail",
+      "Fashion",
+      "Luxury",
+      "Design",
+      "Furniture",
+      "Home Decor",
     ],
     "Travel & Hospitality": [
-      "Travel", "Tourism", "Hospitality", "Food", "Nature", "Outdoor"
+      "Travel",
+      "Tourism",
+      "Hospitality",
+      "Food",
+      "Nature",
+      "Outdoor",
     ],
     "Entertainment & Culture": [
-      "Entertainment", "Music", "Art", "Culture", "Cultural", "Cinema Halls"
+      "Entertainment",
+      "Music",
+      "Art",
+      "Culture",
+      "Cultural",
+      "Cinema Halls",
     ],
     "Business & Finance": [
-      "Business", "Finance", "Investment", "Legal Services", "Law"
+      "Business",
+      "Finance",
+      "Investment",
+      "Legal Services",
+      "Law",
     ],
-    "Real Estate & Infrastructure": [
-      "Real Estate", "Construction"
-    ],
+    "Real Estate & Infrastructure": ["Real Estate", "Construction"],
     "Community & Non-Profits": [
-      "Community", "Local Business", "Charity", "Non-Profit", "Social Impact"
+      "Community",
+      "Local Business",
+      "Charity",
+      "Non-Profit",
+      "Social Impact",
     ],
-    "Automotive & Vehicles": [
-      "Automotive", "Automobile"
-    ],
+    "Automotive & Vehicles": ["Automotive", "Automobile"],
     "Environment & Sustainability": [
-      "Environmental", "Sustainability", "Gardens"
+      "Environmental",
+      "Sustainability",
+      "Gardens",
     ],
     "Places & Locations": [
-      "Tourist Area", "Airport", "Bus Station/Stop", "Metro Station", "Railway Station",
-      "Stadium", "Market Area", "Road Side", "Food Malls", "Mall", "Hospital", "Crowded"
+      "Tourist Area",
+      "Airport",
+      "Bus Station/Stop",
+      "Metro Station",
+      "Railway Station",
+      "Stadium",
+      "Market Area",
+      "Road Side",
+      "Food Malls",
+      "Mall",
+      "Hospital",
+      "Crowded",
     ],
-    "Pet & Animals": [
-      "Pet Care", "Animals"
-    ]
+    "Pet & Animals": ["Pet Care", "Animals"],
   };
-
 
   return (
     <div>
@@ -188,7 +269,9 @@ const BrowseBusShelter = () => {
                   onFocus={() => setIsDropdownOpen(true)}
                 />
                 {selectedLocation && (
-                  <button className="clear-icon" onClick={handleClearSelection}>✖</button>
+                  <button className="clear-icon" onClick={handleClearSelection}>
+                    ✖
+                  </button>
                 )}
               </div>
               {isDropdownOpen && (
@@ -206,7 +289,7 @@ const BrowseBusShelter = () => {
               )}
             </div>
           </div>
-  
+
           <div className="filter-group">
             <h3 className="filter-group-title">CATEGORY</h3>
             <div className="checkbox-container">
@@ -219,42 +302,58 @@ const BrowseBusShelter = () => {
             </div>
           </div>
         </aside>
-  
+
         <div className="content-area">
           <div className="content-header">
             <div className="breadcrumb">
               <a href="/">Home</a>
               <span>→</span>
-              <Link to="/browse-bus-shelter" onClick={() => window.location.reload()} style={{ color: "black", cursor: "pointer" }}>
+              <Link
+                to="/browse-bus-shelter"
+                onClick={() => window.location.reload()}
+                style={{ color: "black", cursor: "pointer" }}
+              >
                 Bus Shelter Ads
               </Link>
             </div>
           </div>
-  
+
           <div className="header-controls">
             <div className="select-wrapper">
-              <select className="select" value={crowdLevel} onChange={(e) => setCrowdLevel(e.target.value)}>
+              <select
+                className="select"
+                value={crowdLevel}
+                onChange={(e) => setCrowdLevel(e.target.value)}
+              >
                 <option value="">Crowd Level</option>
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
               </select>
             </div>
-  
+
             <div className="select-wrapper">
-              <select className="select" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+              <select
+                className="select"
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+              >
                 <option value="top">Price</option>
                 <option value="price-low"> Low to High</option>
                 <option value="price-high"> High to Low</option>
               </select>
             </div>
           </div>
-  
-          <h1 className="page-title">Book Bus Shelter Ads Online At Lowest Rates</h1>
-  
+
+          <h1 className="page-title">
+            Book Bus Shelter Ads Online At Lowest Rates
+          </h1>
+
           <div className="hoarding-grid">
             {busShelters.length === 0 ? (
-              <p style={{ marginTop: "20px" }}>No bus shelters available for this location.</p>
+              <p style={{ marginTop: "20px" }}>
+                No bus shelters available for this location.
+              </p>
             ) : (
               busShelters.map((shelter) => (
                 <Link
@@ -262,23 +361,26 @@ const BrowseBusShelter = () => {
                   to={`/details/${shelter.AdSpace_id}`}
                   className="hoarding-card-link"
                 >
-                <div key={shelter.id} className="hoarding-card">
-                  <div className="hoarding-image">
-                    <img src={shelter.ImageURL || "/placeholder.svg"} alt={shelter.Area} />
-                  </div>
-                  <h3 className="hoarding-title">{shelter.Area}</h3>
-                  <p className="hoarding-language">{shelter.Location}</p>
-                  <div className="hoarding-stats">
-                    <div className="stat-1">
-                      <img src="images/reader.png" alt="readers" />
-                      <span>{shelter["Crowd level"] || "N/A"}</span>
+                  <div key={shelter.id} className="hoarding-card">
+                    <div className="hoarding-image">
+                      <img
+                        src={shelter.ImageURL || "/placeholder.svg"}
+                        alt={shelter.Area}
+                      />
                     </div>
-                    <div className="stat-2">
-                      <img src="images/saletag.png" alt="sale tag" />
-                      <span>₹{shelter.Starting_Rate || "N/A"} Min Spend</span>
+                    <h3 className="hoarding-title">{shelter.Area}</h3>
+                    <p className="hoarding-language">{shelter.Location}</p>
+                    <div className="hoarding-stats">
+                      <div className="stat-1">
+                        <img src="images/reader.png" alt="readers" />
+                        <span>{shelter["Crowd level"] || "N/A"}</span>
+                      </div>
+                      <div className="stat-2">
+                        <img src="images/saletag.png" alt="sale tag" />
+                        <span>₹{shelter.Starting_Rate || "N/A"} Min Spend</span>
+                      </div>
                     </div>
                   </div>
-                </div>
                 </Link>
               ))
             )}
@@ -291,8 +393,5 @@ const BrowseBusShelter = () => {
     </div>
   );
 };
-  
 
 export default BrowseBusShelter;
-
-
