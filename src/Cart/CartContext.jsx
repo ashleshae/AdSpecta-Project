@@ -68,14 +68,30 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  // Clear cart
+  const clearCart = async () => {
+    // Delete all cart items from Firestore
+    const deletePromises = cartItems.map(item => 
+      deleteDoc(doc(db, "cartItems", item.docId))
+    );
+    
+    await Promise.all(deletePromises);
+    setCartItems([]);
+  };
+
   useEffect(() => {
     fetchCartFromFirestore();
   }, []);
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity }}>
+    <CartContext.Provider value={{ 
+      cartItems, 
+      addToCart, 
+      removeFromCart, 
+      updateQuantity,
+      clearCart 
+    }}>
       {children}
     </CartContext.Provider>
   );
 };
-

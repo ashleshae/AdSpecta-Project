@@ -24,6 +24,8 @@ import Dashboard from "./HomePage/components/ui/Dashboard.jsx";
 import AItool from "./HomePage/components/ui/AItool.jsx";
 import { CartProvider } from "./Cart/CartContext";
 import Cart from "./Cart/Cart.jsx";
+import Checkout from "./Cart/Checkout";
+import OrderConfirmation from "./Cart/OrderConfirmation";
 
 const router = createBrowserRouter([
   {
@@ -197,6 +199,24 @@ const router = createBrowserRouter([
       </>
     ),
   },
+  {
+    path: "/checkout",
+    element: (
+      <>
+        <ScrollToTop />
+        <Checkout />
+      </>
+    ),
+  },
+  {
+    path: "/order-confirmation",
+    element: (
+      <>
+        <ScrollToTop />
+        <OrderConfirmation />
+      </>
+    ),
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
