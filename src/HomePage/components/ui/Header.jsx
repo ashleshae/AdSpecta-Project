@@ -147,7 +147,7 @@ const Header = () => {
 
         <div className="leftcorner">
           <ShoppingBag className="icon" />
-          <a href="#">Your Bag</a>
+          <a href="/cart/:adspaceId">Your Bag</a>
         </div>
       </div>
 

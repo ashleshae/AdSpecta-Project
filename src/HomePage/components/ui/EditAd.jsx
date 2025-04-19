@@ -84,7 +84,6 @@ const EditAd = () => {
         CrowdLevel: crowdLevel,
         Tags: tags,
         ImageURL: imageURL,
-        Dimension: dimension,
         Dimension_x: dimension,
       });
       // alert("Ad updated successfully!");

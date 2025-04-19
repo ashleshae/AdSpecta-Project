@@ -21,6 +21,9 @@ import PostAd from "./HomePage/components/ui/PostAd";
 import SeeMyPost from "./HomePage/components/ui/SeeMyPost";
 import EditAd from "./HomePage/components/ui/EditAd";
 import Dashboard from "./HomePage/components/ui/Dashboard.jsx";
+import AItool from "./HomePage/components/ui/AItool.jsx";
+import { CartProvider } from "./Cart/CartContext";
+import Cart from "./Cart/Cart.jsx";
 
 const router = createBrowserRouter([
   {
@@ -168,6 +171,15 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "/aitool",
+    element: (
+      <>
+        <ScrollToTop />
+        <AItool />
+      </>
+    ),
+  },
+  {
     path: "/dashboard",
     element: (
       <>
@@ -176,12 +188,23 @@ const router = createBrowserRouter([
       </>
     ),
   },
+  {
+    path: "/cart/:adspaceId",
+    element: (
+      <>
+        <ScrollToTop />
+        <Cart />
+      </>
+    ),
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <CartProvider>
     <RouterProvider router={router} />
+    </CartProvider>
   </React.StrictMode>
 );
 

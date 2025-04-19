@@ -1,16 +1,38 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { db } from "../firebase.js";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
 import Header from "../HomePage/components/ui/Header.jsx";
 import Navigation from "../HomePage/components/ui/Navigation.jsx";
 import { Link } from "react-router-dom";
 import "./BrowseMedia.css";
+import { CartContext } from "../Cart/CartContext";
 
 const Details = () => {
   const { adspaceId } = useParams(); // Get ID from route
+  const navigate = useNavigate();
   const [adData, setAdData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { addToCart } = useContext(CartContext);
+  
+  const handleAddToCart = async () => {
+    if (!adData) return;
+    
+    const item = {
+      id: adData.AdSpace_id,
+      name: adData.Area,
+      price: adData.Starting_Rate,
+      image: adData.ImageURL,
+      city: adData.City,
+      type: adData.AdSpace_Type
+    };
+
+    // Add to cart using the context function
+    await addToCart(item);
+    
+    // Navigate to cart page
+    navigate("/cart/:adspaceId");
+  };
 
   useEffect(() => {
     const fetchAdData = async () => {
@@ -18,7 +40,6 @@ const Details = () => {
         const q = query(
           collection(db, "AdSpace_Data"),
           where("AdSpace_id", "==", adspaceId)
-          // Optionally, add where("AdSpace_Type", "==", "Hoarding")
         );
 
         const querySnapshot = await getDocs(q);
@@ -122,10 +143,6 @@ const Details = () => {
                 <h4>{adData.AdSpace_Type.toUpperCase()}</h4>
                 <span className="details-info-label">MEDIA TYPE</span>
               </div>
-              {/* <div className="details-info-item">
-                <h4>{adData.Availability}</h4>
-                <span className="details-info-label">AVAILABILITY</span>
-              </div> */}
             </div>
 
             <div className="details-description">
@@ -142,12 +159,11 @@ const Details = () => {
         <div className="details-insights-section">
           <h2 className="details-subheading">Key Insights</h2>
           <div className="details-insight-boxes">
-            <div className="details-insight-item">
-              <span className="details-insight-label">LANDMARK</span>
-              <h4>
-                <h4>{adData.Area}</h4>
-              </h4>
-            </div>
+          <div className="details-insight-item">
+            <span className="details-insight-label">LANDMARK</span>
+              <h4>{adData.Area}</h4>
+          </div>
+
             <div className="details-insight-item">
               <span className="details-insight-label">SIZE</span>
               <h4>{adData.Dimension_x}</h4>
@@ -163,7 +179,7 @@ const Details = () => {
           </div>
 
           <div style={{ textAlign: "center", marginTop: "20px" }}>
-            <button className="add-to-bag-button">Add to Bag</button>
+            <button className="add-to-bag-button" onClick={handleAddToCart}>Add to Bag</button>
           </div>
         </div>
       </div>
