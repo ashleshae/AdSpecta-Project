@@ -73,7 +73,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       <ul className="sidebar-menu">
         <li><a href="/" onClick={toggleSidebar}><span>Home</span></a></li>
         <li><a href="/media-rates" onClick={toggleSidebar}>Find Media Rates</a></li>
-        <li><a href="/aitool" onClick={toggleSidebar}>Poster Designing AI Tool</a></li>
+        <li><a href="/poster-design-tool" onClick={toggleSidebar}>Poster Designing AI Tool</a></li>
         <li>
           <a
             href="#"

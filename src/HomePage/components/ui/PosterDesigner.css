@@ -1,0 +1,229 @@
+.poster-designer-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  .designer-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  .designer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 768px) {
+    .designer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .designer-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .form-group textarea {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    resize: vertical;
+    font-family: inherit;
+    font-size: 1rem;
+  }
+  
+  .size-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .size-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .size-option:hover {
+    border-color: #3399cc;
+    background-color: #f9f9f9;
+  }
+  
+  .size-option.selected {
+    border-color: #3399cc;
+    background-color: #f0f7fc;
+  }
+  
+  .size-name {
+    font-weight: 500;
+  }
+  
+  .size-price {
+    font-weight: 600;
+    color: #3399cc;
+  }
+  
+  .generate-btn {
+    background-color: #3399cc;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .generate-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  .generate-btn:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+  }
+  
+  .error-message {
+    color: #e74c3c;
+    margin-top: 0.5rem;
+  }
+  
+  .poster-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .preview-area {
+    height: 500px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #f9f9f9;
+  }
+  
+  .empty-preview {
+    text-align: center;
+    color: #95a5a6;
+  }
+  
+  .generated-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .generating-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(51, 153, 204, 0.3);
+    border-radius: 50%;
+    border-top-color: #3399cc;
+    animation: spin 1s ease-in-out infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .wait-note {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+  }
+  
+  .poster-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .download-btn, .add-to-cart-btn {
+    flex: 1;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .download-btn {
+    background-color: white;
+    border: 2px solid #3399cc;
+    color: #3399cc;
+  }
+  
+  .download-btn:hover {
+    background-color: #f0f7fc;
+  }
+  
+  .add-to-cart-btn {
+    background-color: #27ae60;
+    border: none;
+    color: white;
+  }
+  
+  .add-to-cart-btn:hover {
+    background-color: #219653;
+  }
+  
+  .designer-info {
+    background-color: #f0f7fc;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+  
+  .designer-info h3 {
+    margin-top: 0;
+    color: #2c3e50;
+  }
+  
+  .designer-info ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .designer-info li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .note {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    font-style: italic;
+  }

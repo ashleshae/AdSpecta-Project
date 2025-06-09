@@ -2,6 +2,13 @@
     padding: 20px;
     font-family: Arial;
   }
+
+  .amazon-cart-container h1 {
+    font-size: 28px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #0f0f0f;
+  }
   
   .cart-main {
     display: flex;

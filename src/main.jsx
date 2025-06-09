@@ -22,6 +22,7 @@ import SeeMyPost from "./HomePage/components/ui/SeeMyPost";
 import EditAd from "./HomePage/components/ui/EditAd";
 import Dashboard from "./HomePage/components/ui/Dashboard.jsx";
 import AItool from "./HomePage/components/ui/AItool.jsx";
+import PosterDesigner from "./HomePage/components/ui/Poster.jsx";
 import { CartProvider } from "./Cart/CartContext";
 import Cart from "./Cart/Cart.jsx";
 import Checkout from "./Cart/Checkout";
@@ -214,6 +215,15 @@ const router = createBrowserRouter([
       <>
         <ScrollToTop />
         <OrderConfirmation />
+      </>
+    ),
+  },
+  {
+    path: "/poster-design-tool",
+    element: (
+      <>
+        <ScrollToTop />
+        <PosterDesigner />
       </>
     ),
   }

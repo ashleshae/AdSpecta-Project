@@ -79,68 +79,67 @@ const Details = () => {
       <Navigation />
 
       <div className="details-container">
-      <div className="content-header">
-        <div className="breadcrumb">
+        <div className="content-header">
+          <div className="breadcrumb">
             <a href="/">Home</a>
             <span>→</span>
 
             {adData && (
-            <>
+              <>
                 <Link
-                to={
+                  to={
                     adData.AdSpace_Type === "Hoarding"
-                    ? "/browse-hoarding"
-                    : adData.AdSpace_Type === "Bus Shelter"
-                    ? "/browse-bus-shelter"
-                    : adData.AdSpace_Type === "Wall Ads"
-                    ? "/browse-roadside-walls"
-                    : adData.AdSpace_Type.startsWith("MetroAds")
-                    ? "/browse-metro"
-                    : adData.AdSpace_Type === "Auto"
-                    ? "/browse-auto"
-                    : "/"
-                }
-                style={{ color: "#007bff", cursor: "pointer" }}
+                      ? "/browse-hoarding"
+                      : adData.AdSpace_Type === "Bus Shelter"
+                      ? "/browse-bus-shelter"
+                      : adData.AdSpace_Type === "Wall Ads"
+                      ? "/browse-roadside-walls"
+                      : adData.AdSpace_Type.startsWith("MetroAds")
+                      ? "/browse-metro"
+                      : adData.AdSpace_Type === "Auto"
+                      ? "/browse-auto"
+                      : "/"
+                  }
+                  style={{ color: "#007bff", cursor: "pointer" }}
                 >
-                {
+                  {
                     adData.AdSpace_Type === "Hoarding"
-                    ? "Billboard"
-                    : adData.AdSpace_Type === "Bus Shelter"
-                    ? "Bus Shelter Ads"
-                    : adData.AdSpace_Type === "Wall Ads"
-                    ? "RoadSide Wall Ads"
-                    : adData.AdSpace_Type.startsWith("MetroAds")
-                    ? "Metro Ads"
-                    : adData.AdSpace_Type === "Auto"
-                    ? "Auto Rickshaws Ads"
-                    : "Ad Space"
-                }
+                      ? "Billboard"
+                      : adData.AdSpace_Type === "Bus Shelter"
+                      ? "Bus Shelter Ads"
+                      : adData.AdSpace_Type === "Wall Ads"
+                      ? "RoadSide Wall Ads"
+                      : adData.AdSpace_Type.startsWith("MetroAds")
+                      ? "Metro Ads"
+                      : adData.AdSpace_Type === "Auto"
+                      ? "Auto Rickshaws Ads"
+                      : "Ad Space"
+                  }
                 </Link>
                 <span>→</span>
                 <span>
-                {adData.AdSpace_Type} - {adData.Location}, {adspaceId}
+                  {adData.AdSpace_Type} - {adData.Location}, {adspaceId}
                 </span>
-            </>
+              </>
             )}
+          </div>
         </div>
-        </div>
-
 
         <h1 className="details-heading">
           Advertising on {adData.AdSpace_Type} in {adData.City} ({adspaceId})
         </h1>
 
         <div className="details-top-section">
-        <img
-          src={adData.ImageURL || "https://via.placeholder.com/400x250"}
-          alt="AdSpace"
-          className="details-image"
-        />
+          <img
+            src={adData.ImageURL || "https://via.placeholder.com/400x250"}
+            alt="AdSpace"
+            className="details-image"
+          />
 
           <div className="details-info-box">
             <div className="details-info-row">
               <div className="details-info-item">
-                <h4>{adData.AdSpace_Type.toUpperCase()}</h4>
+                <div className="details-info-value">{adData.AdSpace_Type.toUpperCase()}</div>
                 <span className="details-info-label">MEDIA TYPE</span>
               </div>
             </div>
@@ -159,22 +158,22 @@ const Details = () => {
         <div className="details-insights-section">
           <h2 className="details-subheading">Key Insights</h2>
           <div className="details-insight-boxes">
-          <div className="details-insight-item">
-            <span className="details-insight-label">LANDMARK</span>
-              <h4>{adData.Area}</h4>
-          </div>
+            <div className="details-insight-item">
+              <span className="details-insight-label">LANDMARK</span>
+              <div className="details-insight-value">{adData.Area}</div>
+            </div>
 
             <div className="details-insight-item">
               <span className="details-insight-label">SIZE</span>
-              <h4>{adData.Dimension_x}</h4>
+              <div className="details-insight-value">{adData.Dimension_x}</div>
             </div>
             <div className="details-insight-item">
               <span className="details-insight-label">STARTING RATE</span>
-              <h4>₹{adData.Starting_Rate}</h4>
+              <div className="details-insight-value">₹{adData.Starting_Rate}</div>
             </div>
             <div className="details-insight-item">
               <span className="details-insight-label">AVAILABILITY</span>
-              <h4>{adData.Availability === "Available" ? "Booked" : "Available"}</h4>
+              <div className="details-insight-value">{adData.Availability === "Available" ? "Booked" : "Available"}</div>
             </div>
           </div>
 
@@ -192,4 +191,3 @@ const Details = () => {
 };
 
 export default Details;
-
