@@ -4,14 +4,15 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth"; // ✅ Add this line
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBG7GDRyFANNMSh2_JvMSMTMsLcnAaVLn8",
-    authDomain: "adspecta-c3c0f.firebaseapp.com",
-    projectId: "adspecta-c3c0f",
-    storageBucket: "adspecta-c3c0f.firebasestorage.app",
-    messagingSenderId: "794254859674",
-    appId: "1:794254859674:web:b027861d3073999191ae23",
-    measurementId: "G-4YFTWM82V1"
+  apiKey: "AIzaSyCH9Wiu-N6x44CmYUtwxIIBHZlKolGgG4w",
+  authDomain: "finaladspecta.firebaseapp.com",
+  projectId: "finaladspecta",
+  storageBucket: "finaladspecta.firebasestorage.app",
+  messagingSenderId: "480429853652",
+  appId: "1:480429853652:web:e09fbbbe05728920432441",
+  measurementId: "G-T4JNMMDJF7"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
