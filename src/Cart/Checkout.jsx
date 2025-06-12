@@ -56,6 +56,10 @@ const Checkout = () => {
     return name && email && phone && address && city && state && pincode;
   };
 
+  const handleBackToCart = () => {
+    navigate("/cart/:adspaceId");
+  };
+
   const handlePayment = async (e) => {
     e.preventDefault();
     
@@ -80,7 +84,7 @@ const Checkout = () => {
       
       // Initialize Razorpay payment
       const options = {
-        key: "rzp_test_YourTestKeyHere", // Replace with your Razorpay Key
+        key: "", // Replace with your Razorpay Key
         amount: total * 100, // Razorpay accepts amount in paise
         currency: "INR",
         name: "AdSpecta",
@@ -156,7 +160,12 @@ const Checkout = () => {
 
   return (
     <div className="checkout-container">
-      <h1>Checkout Page</h1>
+      <div className="checkout-header">
+        <button onClick={handleBackToCart} className="back-btn">
+          ← Back to Cart
+        </button>
+        <h1>Checkout Page</h1>
+      </div>
       
       <div className="checkout-grid">
         <div className="checkout-form">
