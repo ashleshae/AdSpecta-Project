@@ -1393,3 +1393,16 @@
   list-style-type: decimal;
 }
 
+.login-box label {
+  display: block;
+  text-align: left;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.signup-box label {
+  display: block;
+  text-align: left;
+  font-weight: 500;
+  margin-bottom: 4px;
+}

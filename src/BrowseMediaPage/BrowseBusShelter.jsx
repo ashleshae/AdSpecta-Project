@@ -81,7 +81,7 @@ const BrowseBusShelter = () => {
         if (crowdLevel !== "") {
           filtered = filtered.filter(
             (item) =>
-              item["Crowd level"]?.toLowerCase() === crowdLevel.toLowerCase()
+              item["CrowdLevel"]?.toLowerCase() === crowdLevel.toLowerCase()
           );
         }
 
@@ -118,6 +118,13 @@ const BrowseBusShelter = () => {
     setSelectedLocation("");
     setSearchTerm("");
     setIsDropdownOpen(false);
+  };
+
+  
+  const handleLabelClick = (label) => {
+    setSelectedCategories((prev) =>
+      prev.includes(label) ? prev.filter((item) => item !== label) : [...prev, label]
+    );
   };
 
   const renderCheckbox = (label) => (
@@ -295,12 +302,24 @@ const BrowseBusShelter = () => {
             <div className="checkbox-container">
               {Object.entries(categoryData).map(([group, labels]) => (
                 <details key={group}>
-                  <summary>{group}</summary>
-                  {labels.map(renderCheckbox)}
-                </details>
-              ))}
-            </div>
+                <summary>{group}</summary>
+                <div className="label-list">
+                  {labels.map((label) => (
+            <button
+              key={label}
+              className={`label-button ${selectedCategories.includes(label) ? 'active' : ''}`}
+              onClick={() => handleLabelClick(label)}
+            >
+              {label}
+            </button>
+
+          ))}
           </div>
+        
+          </details>
+          ))}
+          </div>
+        </div>
         </aside>
 
         <div className="content-area">
@@ -357,7 +376,7 @@ const BrowseBusShelter = () => {
             ) : (
               busShelters.map((shelter) => (
                 <Link
-                  key={shelter.AdSpace_id}
+                  key={shelter.id}
                   to={`/details/${shelter.AdSpace_id}`}
                   className="hoarding-card-link"
                 >
@@ -373,7 +392,7 @@ const BrowseBusShelter = () => {
                     <div className="hoarding-stats">
                       <div className="stat-1">
                         <img src="images/reader.png" alt="readers" />
-                        <span>{shelter["Crowd level"] || "N/A"}</span>
+                        <span>{shelter["CrowdLevel"] || "N/A"}</span>
                       </div>
                       <div className="stat-2">
                         <img src="images/saletag.png" alt="sale tag" />

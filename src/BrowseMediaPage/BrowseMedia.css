@@ -368,18 +368,17 @@ body {
 }
 
 .select {
-  width: 180px; /* Adjust width as needed */
+  width: 180px;
   padding: 10px;
   font-size: 14px;
   border: 2px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
-  appearance: none; /* Removes default browser styling */
+  appearance: none; 
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 
-/* Optional: Add a down-arrow icon */
 .select-wrapper::after {
   content: "▼";
   font-size: 12px;
@@ -399,14 +398,57 @@ body {
   padding: 4px 0;
 }
 
-.checkbox-container label {
+/* .checkbox-container label {
   display: block;
   padding-left: 1rem;
   margin: 2px 0;
   cursor: pointer;
-  display: flex;
   gap: 8px; 
+} */
+
+.filter-group-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
+
+.checkbox-container details {
+  margin-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 6px;
+}
+
+.checkbox-container summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 4px 0;
+}
+
+/* Vertical clickable labels */
+.label-list {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.label-button {
+  text-align: left;
+  background-color: #f0f0f0;
+  border: none;
+  padding: 6px 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.label-button:hover {
+  background-color: #e0e0e0;
+}
+
 
 .details-container {
   font-family: "Segoe UI", sans-serif;
@@ -577,3 +619,26 @@ body {
   object-fit: cover;
   border-radius: 8px;
 }
+
+.label-button {
+  padding: 6px 12px;
+  /* margin: 4px; */
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  color: #333;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.label-button:hover {
+  background-color: #e0e0e0;
+}
+
+.label-button.active {
+  background-color: #333; /* Dark background */
+  color: #fff;            /* White text for contrast */
+  border-color: #333;
+}
+
+

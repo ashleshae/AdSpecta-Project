@@ -56,7 +56,7 @@ const BrowseRoadsideWalls = () => {
 
         if (crowdLevel !== "") {
           filtered = filtered.filter((ad) =>
-            ad["Crowd level"]?.toLowerCase() === crowdLevel.toLowerCase()
+            ad["CrowdLevel"]?.toLowerCase() === crowdLevel.toLowerCase()
           );
         }
 
@@ -90,6 +90,14 @@ const BrowseRoadsideWalls = () => {
     setSearchTerm("");
     setIsDropdownOpen(false);
   };
+
+  
+  const handleLabelClick = (label) => {
+    setSelectedCategories((prev) =>
+      prev.includes(label) ? prev.filter((item) => item !== label) : [...prev, label]
+    );
+  };
+
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -180,16 +188,27 @@ const BrowseRoadsideWalls = () => {
           </div>
 
           <div className="filter-group">
-            <h3 className="filter-group-title">CATEGORY</h3>
-            <div className="checkbox-container">
-              {Object.entries(categoryData).map(([group, labels]) => (
-                <details key={group}>
-                  <summary>{group}</summary>
-                  {labels.map(renderCheckbox)}
-                </details>
-              ))}
-            </div>
-          </div>
+  <h3 className="filter-group-title">CATEGORY</h3>
+  <div className="checkbox-container">
+    {Object.entries(categoryData).map(([group, labels]) => (
+      <details key={group}>
+        <summary>{group}</summary>
+        <div className="label-list">
+          {labels.map((label) => (
+            <button
+              key={label}
+              className={`label-button ${selectedCategories.includes(label) ? 'active' : ''}`}
+              onClick={() => handleLabelClick(label)}
+            >
+              {label}
+            </button>
+
+          ))}
+        </div>
+      </details>
+    ))}
+  </div>
+</div>
         </aside>
 
         <div className="content-area">
@@ -230,7 +249,7 @@ const BrowseRoadsideWalls = () => {
             ) : (
               wallAds.map((ad) => (
                 <Link
-                  key={ad.AdSpace_id}
+                  key={ad.id}
                   to={`/details/${ad.AdSpace_id}`}
                   className="hoarding-card-link"
                 >
@@ -243,7 +262,7 @@ const BrowseRoadsideWalls = () => {
                     <div className="hoarding-stats">
                       <div className="stat-1">
                         <img src="images/reader.png" alt="readers" />
-                        <span>{ad["Crowd level"] || "N/A"}</span>
+                        <span>{ad.CrowdLevel || "N/A"}</span>
                       </div>
                       <div className="stat-2">
                         <img src="images/saletag.png" alt="sale tag" />

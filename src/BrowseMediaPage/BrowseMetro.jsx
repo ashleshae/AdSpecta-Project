@@ -63,7 +63,7 @@ const BrowseMetro = () => {
         if (crowdLevel !== "") {
           filtered = filtered.filter(
             (ad) =>
-              ad["Crowd level"]?.toLowerCase() === crowdLevel.toLowerCase()
+              ad["CrowdLevel"]?.toLowerCase() === crowdLevel.toLowerCase()
           );
         }
 
@@ -213,7 +213,7 @@ const BrowseMetro = () => {
             ) : (
               metroAds.map((ad) => (
                 <Link
-                  key={ad.AdSpace_id}
+                  key={ad.id}
                   to={`/details/${ad.AdSpace_id}`}
                   className="hoarding-card-link"
                 >
@@ -229,7 +229,7 @@ const BrowseMetro = () => {
                     <div className="hoarding-stats">
                       <div className="stat-1">
                         <img src="images/reader.png" alt="readers" />
-                        <span>{ad["Crowd level"] || "N/A"}</span>
+                        <span>{ad["CrowdLevel"] || "N/A"}</span>
                       </div>
                       <div className="stat-2">
                         <img src="images/saletag.png" alt="sale tag" />
